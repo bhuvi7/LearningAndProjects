@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloResource {
 
-//	@Value("${spring.message}")
-//	private String message;
+	@Value("${spring.datasource.url}")
+	private String message;
 	
 	@GetMapping
 	public String hello() {
