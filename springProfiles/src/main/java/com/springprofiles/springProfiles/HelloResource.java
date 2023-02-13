@@ -12,8 +12,8 @@ public class HelloResource {
 	@Value("${spring.datasource.url}")
 	private String message;
 	
-	@GetMapping
+	@GetMapping("/hello")
 	public String hello() {
-		return "hello";
+		return message;
 	}
 }
