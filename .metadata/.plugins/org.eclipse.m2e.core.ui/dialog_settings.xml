@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\Bhuvanesh\Microservice\springProfiles"/>
 			<item value="D:\Bhuvanesh\Microservice\ServiceDiscovery"/>
 			<item value="D:\Bhuvanesh\Microservice\product"/>
 			<item value="D:\Bhuvanesh\Microservice\Home"/>
