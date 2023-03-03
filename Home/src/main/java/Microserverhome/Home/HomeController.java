@@ -14,6 +14,7 @@ public class HomeController {
 	
 	@GetMapping("/home")
 	public String home() {
-		return restTemplates.getForObject("http://PRODUCT-MICROSERVICE/product", String.class);
+		return "ddd";
+//				restTemplates.getForObject("http://PRODUCT-MICROSERVICE/product", String.class);
 	}
 }
