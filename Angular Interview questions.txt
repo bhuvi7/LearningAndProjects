@@ -1,0 +1,214 @@
+ Angular:-
+ 1. Angular flow
+ 
+ angular.json -> main.ts -> APP.MODULE.TS -> APP.COMPONENT.TS  -> INDEX.HTML -> APP.COMPONENT.HTML
+ 
+ 2. Interpolation
+  
+  {} which help to display the value from ts to html
+  
+ 3.  Data binding
+ 
+ Binding data to the html template, which has two types one way & two way data binding.
+ 
+ 4. two way databinding
+ 
+ [()] banana box symbol, in two way databinding the flow goes both the ways.
+ 
+ 5. one way databinding:-
+ 
+ flow is from ts file to html.
+ 
+ Property binding - [] when property of one variable should be taken place in html file
+ event binding - () when use does some actions then the method or funtionality gets fired
+ 
+ 6. Life cycle hooks:-
+ special functionality in Angular that allow us to “hook into” and run code at a specific 
+ lifecycle event of a component or directive
+ 
+These are the hooks for components or directives, in call order:
+constructor()
+OnChanges
+OnInit
+DoCheck
+OnDestroy
+
+And these are the hooks for a component’s children components:
+AfterContentInit
+AfterContentChecked
+AfterViewInit
+AfterViewChecked
+
+OnChanges			Called when the input properties have changed
+OnInit				Called on initialization
+DoCheck				Developer’s custom change detection
+OnDestroy			Called before the component is destroyed
+AfterContentInit	Called when the component’s content ngContent is initialized
+AfterContentChecked	Called when the component’s content is updated or checked for updates
+AfterViewInit		Called when the component’s projected view has been initialized
+AfterViewChecked	Called after the projected view has been checked
+
+https://blog.logrocket.com/angular-lifecycle-hooks/
+
+7. Pipes
+
+transform & format the html content it is only for view purpose. 
+*pipe can be chained 
+*pipe can be parameterized
+
+8. custom pipe
+ng g pipe pipeName -> the class should be decorated with @pipe  -> use pipe name for custom pipe ->
+ we have to implement pipeTransform -> override transform method 
+ 
+ 9. Directives
+ 
+ * Attribute -> ngStyle( applying styles) or ngClass(applying CSS classes).
+ * Structural -> *ngIf *ngFor *ngSwitch
+ * component -> @COMPONENT
+ * Custom -> ng generate directive dir_name -> @Directive -> using selector name we can use custom dir
+ 
+ Directives are defined as classes that can add new behavior to the elements in the 
+ template or modify existing behavior.
+ 
+ 10. Decorators in angular
+ 
+* Class decorators, such as @Component and @NgModule
+* Property decorators for properties inside classes, such as @Input and @Output
+* Method decorators for methods inside classes, such as @HostListener
+* Parameter decorators for parameters inside class constructors, such as @Inject
+
+11. @NgModule
+
+@NgModule({
+  declarations: [
+    AppComponent   -> components will be available
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule  -> importing the required funtionality from anywhere
+  ],
+  providers: [], -> service for other components
+  bootstrap: [AppComponent] -> to kick start particular module
+})
+
+12. Parent to child communication
+
+ * child selector name should be present in parent.html
+ 
+* inside the child selector -> variable name should be same in parent and child component
+ & should be property binded and assign the value for the variable which is sent.
+ 
+
+ @Input() movieList: Array<string> = []; -- child.ts
+ 
+   myFavoriteMovies = [ 'Encanto', 
+'Spider-Man: No Way Home', 
+"Harry Potter and the Sorcerer's Stone" ]; -- parent.ts
+
+<p>movie-dashboard works!</p>
+<app-movie-table [movieList]="myFavoriteMovies"></app-movie-table> -- parent.html
+
+<tr *ngFor="let movie of movieList">
+<td>{{movie}}</td> 						-- child.html
+
+13. child to parent 
+
+* use @output decorator in child.ts file & emit the value to same variable used in parent component
+* in parent comp-> inside the child selector -> use event binding in the variable and assign the value
+
+
+ @Output()
+  movieSelectedEventEmitter =  new EventEmitter(); 			-- child.ts
+  
+   <td><input type="button" value="Select" 
+(click)="movieSelected(movie)"></td> 						-- child.html
+
+    movieSelected(selectedMovie: string) { 
+  this.movieSelectedEventEmitter.emit(selectedMovie); 		--child.ts
+  }
+
+<p>movie-dashboard works!</p>
+<app-movie-table 
+(movieSelectedEventEmitter)="selectedMovieToWatch($event)" >  -- parent.html
+</app-movie-table>
+
+selectedMovieToWatch(data: string) {
+    debugger;
+    alert(data); 											-- parent.ts
+  }
+  
+  
+  14. sibling communication
+  
+  15. observable, promise, subject, BehaviorSubject
+  
+  16. httpInterceptors
+  
+  ng g interceptor int_name -> implements HttpInterceptor interface -> intercept() method should be implemented
+  
+  * Modify the request which sent/recieve from front-end/backend
+  * Error handing
+  
+  17. Routing
+  
+  {path:'name' , componentName}
+  
+  18. Feature module/Lazy loading
+  
+  * To load the necessary module which user wants -> to achieve it in a faster way.
+  
+  const rootRoutes = [ 
+    { 
+        path: '', 
+        component: ApplicationFrameComponent, 
+        children: [ 
+            { 
+                path: 'home', 
+                loadChildren: () => HomeDashboardRoutingModule 
+            }, 
+            { 
+                path: 'api-list', 
+                loadChildren: @import('./api-list.module').then(module => module.ApiListRoutingModule) 
+            }] 
+    }];
+	
+	19. localstorage & sessionstorage
+	
+	* we can json format data
+	* sessionstorage will get cleared when to close the page or browser
+	* localstorage it lasts forever
+	* it is a key value pair
+	* getitem, setitem, clear, remove
+	
+	20. dependency injection
+	
+	@Injectable({  
+  providedIn: 'root',  
+})  
+
+* app.module.ts -> provides array give the service
+* in component -> constructor(private serviceName: service)
+* services in angular are singleton in nature
+
+21. *ngFor, reactive form, employee array problems
+
+22. nxjs
+
+23. postmapping, getmapping code
+
+
+
+  
+  
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+
+ 
+ 

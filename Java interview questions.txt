@@ -1,0 +1,69 @@
+1) Java 8 features
+*Functional Interface
+*Stream API
+*Default & static Methods
+*Lambda Expressions
+*Date and time API -- Immutability,Thread-safety,Time zone support:
+*Optional Class
+
+2) Functional interface
+*Functional interface has one abstract method it uses @FunctionalInterface annotation.
+*used to achive lambda expression
+
+3) Atomic integer in java
+To make it threat safe we use atomic integer
+
+4) Consider a list with null,positive,negative integers.Write code to sum all the positive integers
+List<Integer> li = Arrays.asList(null,-1,2);
+Integer total = li.stream().filter(x-> x!=null).collect(Collectors.summingInt(Integer::intValue));
+
+
+5) Count and display the number of positive, negative and null values in the list
+
+6) Get current date in java 8
+LocalDate date = LocalDate.now();
+
+7.explain multithreading with example
+public class Main {
+    public static void main(String[] args) {
+        MyThread myThread = new MyThread();
+        myThread.start();
+        
+        // main thread continues executing while myThread runs concurrently
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Main thread: " + i);
+        }
+    }
+}
+
+class MyThread extends Thread {
+    public void run() {
+        // thread code to be executed concurrently
+        for (int i = 0; i < 10; i++) {
+            System.out.println("MyThread: " + i);
+        }
+    }
+}
+8.java program to remove duplicates from an array
+	   List<Integer> withoutDups = 	li.stream().distinct().collect(Collectors.toList());
+	   
+9.optional classes
+*optional classes used to handle nullpointerexceptions
+*of & ofNullable
+
+
+10.stream methods
+*Map,filter,findany,findFirst,count,distinct
+
+11.default methods in which scenario
+*For backward compatability
+
+12.implement singleton class and in what case you have came across?
+
+13. Write a program to sum the salary of employees whose age >30,we have List of employees name ,age and salary
+	Long output = employeeList.stream().filter(x-> x.getAge()>30).map(x-> x.getSalary()).reduce((a,b)-> a+b).get();
+	
+14. why we go for try with resource
+
+15. use of finally
+
