@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -56,10 +57,16 @@ public class InterviewQuestions {
 //	        }
 	        
 //	        java program to remove duplicates from an array
-	    	List<Integer> lii = Arrays.asList(null,-1,2,-10,3,4,2); 
+	    	List<Integer> lii = Arrays.asList(122,-1,2,-10,3,4,2); 
+	    	
+	    	
 	    	
 	   List<Integer> withoutDups = 	lii.stream().distinct().collect(Collectors.toList());
 	   System.out.println("Without duplications " + withoutDups);
+	   
+	   //find highest three number in java 8 
+	   List<Integer> highestThreeElem = lii.stream().sorted(Comparator.reverseOrder()).limit(3).collect(Collectors.toList());
+	   System.out.println("highest three numbers " + highestThreeElem);
 	   
 //	   Write a program to sum the salary of employees whose age >30,we have List of employees name ,age and salary
 		List<Employee> employeeList = new ArrayList<>();

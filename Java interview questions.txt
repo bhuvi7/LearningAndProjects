@@ -49,6 +49,7 @@ class MyThread extends Thread {
 	   
 9.optional classes
 *optional classes used to handle nullpointerexceptions
+*Reduce boiler plate codes
 *of & ofNullable
 
 
@@ -64,6 +65,27 @@ class MyThread extends Thread {
 	Long output = employeeList.stream().filter(x-> x.getAge()>30).map(x-> x.getSalary()).reduce((a,b)-> a+b).get();
 	
 14. why we go for try with resource
+*Autoclosable interface
+* This interface has a single method, "close()", which is called when the resource is no longer needed and should be closed.
 
 15. use of finally
+*Default block 
+
+16.what is anonymous class?
+an anonymous class is a local class that is declared and instantiated at the same time, without using a separate class declaration.
+
+17. terminal operator in java
+count(), forEach(), collect(), reduce()
+
+18. Intermediate operator in java
+filter(), map(),  distinct(), sorted()
+
+19.Comparable & Comparator interface
+When a class implements the Comparable interface, it must implement the compareTo() method, which returns an integer value that indicates whether the object is greater than, equal to, or less than the specified object.
+
+
+serialization, deserialization
+serialVersionUID what is its use?
+Transient variable?
+
 
