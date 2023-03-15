@@ -61,6 +61,7 @@ public class InterviewQuestions {
 	    	
 	    	
 	    	
+	    
 	   List<Integer> withoutDups = 	lii.stream().distinct().collect(Collectors.toList());
 	   System.out.println("Without duplications " + withoutDups);
 	   
@@ -77,6 +78,7 @@ public class InterviewQuestions {
 		
 		Long output = employeeList.stream().filter(x-> x.getAge()>30).map(x-> x.getSalary()).reduce((a,b)-> a+b).get();
 		System.out.println(output);
+		
 	}
 	
 }

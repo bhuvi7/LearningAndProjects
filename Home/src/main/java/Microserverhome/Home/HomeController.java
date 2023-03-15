@@ -12,9 +12,15 @@ public class HomeController {
 	@Autowired
 	private RestTemplate restTemplates;
 	
+	@Autowired
+	private Employee employee;
+	
 	@GetMapping("/home")
 	public String home() {
 		return "ddd";
 //				restTemplates.getForObject("http://PRODUCT-MICROSERVICE/product", String.class);
 	}
+	
+//	@GetMapping("/getResponse")
+//	public 	ResponseEntity
 }
