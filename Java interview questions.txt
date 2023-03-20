@@ -65,7 +65,7 @@ class MyThread extends Thread {
 	Long output = employeeList.stream().filter(x-> x.getAge()>30).map(x-> x.getSalary()).reduce((a,b)-> a+b).get();
 	
 14. why we go for try with resource
-*Autoclosable interface
+* Autoclosable interface
 * This interface has a single method, "close()", which is called when the resource is no longer needed and should be closed.
 
 15. use of finally
@@ -83,9 +83,28 @@ filter(), map(),  distinct(), sorted()
 19.Comparable & Comparator interface
 When a class implements the Comparable interface, it must implement the compareTo() method, which returns an integer value that indicates whether the object is greater than, equal to, or less than the specified object.
 
+The Comparator interface is used to define a custom ordering of objects
 
-serialization, deserialization
-serialVersionUID what is its use?
-Transient variable?
+20. serialization, deserialization
+Serialization is the process of converting an object into a stream of bytes so that it can be easily stored or transmitted over a network
+
+21. serialVersionUID what is its use?
+
+22. Transient variable?
+In Java, the transient keyword is used to indicate that a field should not be serialized during object serialization.
+
+23. Deadlock in java
+A deadlock in Java is a situation where two or more threads are blocked and waiting for each other to release a resource or a lock that they need in order to proceed.
+
+24. what is diamond operator?
+In Java, the diamond operator <> is used to denote the use of a generic type parameter without explicitly specifying its type.
+
+25. ConcurrentHashMap?
+which allows concurrent access to multiple threads, hence concurrent modification error wont popup while looping.
+
+26. String Immutable, why?
+Security,Performance because it caches the value,Thread-safety,Consistency, 
+
+27. types of string declaration and how it stores internally
 
 
