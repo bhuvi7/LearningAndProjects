@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -78,6 +79,12 @@ public class InterviewQuestions {
 		
 		Long output = employeeList.stream().filter(x-> x.getAge()>30).map(x-> x.getSalary()).reduce((a,b)-> a+b).get();
 		System.out.println(output);
+		
+		
+		//grouping
+		Map<String, Long> countOfEmployee = employeeList.stream().collect(Collectors.groupingBy(Employee::getEmployeeName,Collectors.counting()));
+		System.out.println("count of employee "+countOfEmployee);
+		
 		
 	}
 	

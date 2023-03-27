@@ -16,7 +16,7 @@ public class LoginController {
 	@Autowired
 	private JwtService jwtService;
 	
-	@Autowired
+	@Autowired(required=false)
 	private AuthenticationManager authenticationManager;
 
 	@PostMapping("/authenticate")
@@ -31,6 +31,6 @@ public class LoginController {
 		
 	}
 	
-	public AuthenticationManager 
+//	public AuthenticationManager 
 	
 }
