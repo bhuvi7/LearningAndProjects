@@ -76,6 +76,9 @@ public class InterviewQuestions {
 		employeeList.add(new Employee("Bhuvanesh",32,1000));
 		employeeList.add(new Employee("Diva",30,2000));
 		employeeList.add(new Employee("kranti",31,3000));
+		 
+		List<Integer> empListSorted=lii.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+		
 		
 		Long output = employeeList.stream().filter(x-> x.getAge()>30).map(x-> x.getSalary()).reduce((a,b)-> a+b).get();
 		System.out.println(output);

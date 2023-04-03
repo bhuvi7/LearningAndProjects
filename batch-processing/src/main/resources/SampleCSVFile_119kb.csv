@@ -1,13 +1,12 @@
-Id,FirstName,LastName,Quantity,Expenses,Income,Bonus,District,OrderList,RateOfInterest
+id,firstName,lastName,quantity,expenses,income,bonus,district,orderList,rateOfInterest
 1,"Eldon Base for stackable storage shelf, platinum",Muhammed MacIntyre,3,-213.25,38.94,35,Nunavut,Storage & Organization,0.8
-2,"1.7 Cubic Foot Compact ""Cube"" Office Refrigerators",Barry French,293,457.81,208.16,68.02,Nunavut,Appliances,0.58
 3,"Cardinal Slant-D® Ring Binder, Heavy Gauge Vinyl",Barry French,293,46.71,8.69,2.99,Nunavut,Binders and Binder Accessories,0.39
 4,R380,Clay Rozendal,483,1198.97,195.99,3.99,Nunavut,Telephones and Communication,0.58
 5,Holmes HEPA Air Purifier,Carlos Soltero,515,30.94,21.78,5.94,Nunavut,Appliances,0.5
 6,G.E. Longer-Life Indoor Recessed Floodlight Bulbs,Carlos Soltero,515,4.43,6.64,4.95,Nunavut,Office Furnishings,0.37
 7,"Angle-D Binders with Locking Rings, Label Holders",Carl Jackson,613,-54.04,7.3,7.72,Nunavut,Binders and Binder Accessories,0.38
-8,"SAFCO Mobile Desk Side File, Wire Frame",Carl Jackson,613,127.7,42.76,6.22,Nunavut,Storage & Organization,
-9,"SAFCO Commercial Wire Shelving, Black",Monica Federle,643,-695.26,138.14,35,Nunavut,Storage & Organization,
+8,"SAFCO Mobile Desk Side File, Wire Frame",Carl Jackson,613,127.7,42.76,6.22,Nunavut,Storage & Organization,1
+9,"SAFCO Commercial Wire Shelving, Black",Monica Federle,643,-695.26,138.14,35,Nunavut,Storage & Organization,1
 10,Xerox 198,Dorothy Badders,678,-226.36,4.98,8.33,Nunavut,Paper,0.38
 11,Xerox 1980,Neola Schneider,807,-166.85,4.28,6.18,Nunavut,Paper,0.4
 12,Advantus Map Pennant Flags and Round Head Tacks,Neola Schneider,807,-14.33,3.95,2,Nunavut,Rubber Bands,0.53
@@ -70,7 +69,7 @@ Id,FirstName,LastName,Quantity,Expenses,Income,Bonus,District,OrderList,RateOfIn
 69,"80 Minute CD-R Spindle, 100/Pack - Staples",Dorothy Wardle,6982,407.44,39.48,1.99,Nunavut,Computer Peripherals,0.54
 70,"Bush Westfield Collection Bookcases, Dark Cherry Finish, Fully Assembled",Dorothy Wardle,6982,-338.27,100.98,57.38,Nunavut,Bookcases,0.78
 71,12-1/2 Diameter Round Wall Clock,Dorothy Wardle,6982,52.56,19.98,10.49,Nunavut,Office Furnishings,0.49
-72,SAFCO Arco Folding Chair,Grant Carroll,7110,1902.24,276.2,24.49,Nunavut,Chairs & Chairmats,
+72,SAFCO Arco Folding Chair,Grant Carroll,7110,1902.24,276.2,24.49,Nunavut,Chairs & Chairmats,1
 73,"#10 White Business Envelopes,4 1/8 x 9 1/2",Barry Weirich,7430,353.2,15.67,1.39,Nunavut,Envelopes,0.38
 74,3M Office Air Cleaner,Beth Paige,7906,271.78,25.98,5.37,Nunavut,Appliances,0.5
 75,"Global Leather and Oak Executive Chair, Black",Sylvia Foulston,8391,-268.36,300.98,64.73,Nunavut,Chairs & Chairmats,0.56
@@ -212,7 +211,7 @@ Id,FirstName,LastName,Quantity,Expenses,Income,Bonus,District,OrderList,RateOfIn
 211,CF 888,Eugene Barchas,24128,1459.79,195.99,3.99,Northwest Territories,Telephones and Communication,0.59
 212,Hewlett-Packard Deskjet 6122 Color Inkjet Printer,Thomas Seio,24294,1951.3,200.97,15.59,Northwest Territories,Office Machines,0.36
 213,Dana Halogen Swing-Arm Architect Lamp,Bryan Mills,24387,51.9,40.97,14.45,Northwest Territories,Office Furnishings,0.57
-214,"SAFCO PlanMaster Heigh-Adjustable Drafting Table Base, 43w x 30d x 30-37h, Black",Bryan Mills,24387,1418.36,349.45,60,Northwest Territories,Tables,
+214,"SAFCO PlanMaster Heigh-Adjustable Drafting Table Base, 43w x 30d x 30-37h, Black",Bryan Mills,24387,1418.36,349.45,60,Northwest Territories,Tables,1
 215,Lexmark Z25 Color Inkjet Printer,Eugene Barchas,24515,121.48,80.97,33.6,Northwest Territories,Office Machines,0.37
 216,Hon Multipurpose Stacking Arm Chairs,Sylvia Foulston,24743,176.67,216.6,64.2,Northwest Territories,Chairs & Chairmats,0.59
 217,Hon Olson Stacker Stools,Sylvia Foulston,24743,753.61,140.81,24.49,Northwest Territories,Chairs & Chairmats,0.57
@@ -273,7 +272,7 @@ Id,FirstName,LastName,Quantity,Expenses,Income,Bonus,District,OrderList,RateOfIn
 272,Rush Hierlooms Collection Rich Wood Bookcases,Grant Carroll,29795,813.83,160.98,35.02,Northwest Territories,Bookcases,0.72
 273,Avery 481,Brad Eason,29861,5.58,3.08,0.99,Northwest Territories,Labels,0.37
 274,Sharp AL-1530CS Digital Copier,Charles McCrossin,30658,6907.61,499.99,24.49,Northwest Territories,Copiers and Fax,0.36
-275,"SAFCO Commercial Wire Shelving, Black",Charles McCrossin,30658,-942.5,138.14,35,Northwest Territories,Storage & Organization,
+275,"SAFCO Commercial Wire Shelving, Black",Charles McCrossin,30658,-942.5,138.14,35,Northwest Territories,Storage & Organization,1
 276,"Avery Trapezoid Extra Heavy Duty 4"" Binders",Charles McCrossin,30947,261.24,41.94,2.99,Northwest Territories,Binders and Binder Accessories,0.35
 277,Self-Adhesive Address Labels for Typewriters by Universal,Charles McCrossin,30947,183.53,7.31,0.49,Northwest Territories,Labels,0.38
 278,StarTAC Series,Bryan Mills,31077,470.83,65.99,3.9,Northwest Territories,Telephones and Communication,0.55
@@ -374,7 +373,7 @@ Id,FirstName,LastName,Quantity,Expenses,Income,Bonus,District,OrderList,RateOfIn
 373,Ibico Covers for Plastic or Wire Binding Elements,Beth Thompson,41409,-18.25,11.5,7.19,Northwest Territories,Binders and Binder Accessories,0.4
 374,Hoover Portapower™ Portable Vacuum,Bryan Mills,41696,-2088.68,4.48,49,Northwest Territories,Appliances,0.6
 375,Fellowes Command Center 5-outlet power strip,Alan Barnes,42209,-12.82,67.84,0.99,Northwest Territories,Appliances,0.58
-376,SAFCO Arco Folding Chair,Alan Barnes,42209,2795.36,276.2,24.49,Northwest Territories,Chairs & Chairmats,
+376,SAFCO Arco Folding Chair,Alan Barnes,42209,2795.36,276.2,24.49,Northwest Territories,Chairs & Chairmats,1
 377,Accessory12,Beth Paige,42561,298.48,85.99,2.5,Northwest Territories,Telephones and Communication,0.35
 378,"Global Leather Highback Executive Chair with Pneumatic Height Adjustment, Black",Mike Pelletier,42564,2155.41,200.98,23.76,Northwest Territories,Chairs & Chairmats,0.58
 379,3390,Delfina Latchford,42695,-10.3,65.99,5.31,Northwest Territories,Telephones and Communication,0.57
@@ -440,7 +439,7 @@ Id,FirstName,LastName,Quantity,Expenses,Income,Bonus,District,OrderList,RateOfIn
 439,Avery 492,Mike Pelletier,52193,10.51,2.88,0.5,Northwest Territories,Labels,0.39
 440,Newell 343,Mike Pelletier,52193,6.04,2.94,0.96,Northwest Territories,Pens & Art Supplies,0.58
 441,Recycled Eldon Regeneration Jumbo File,Doug Bickford,52321,-37.52,12.28,6.13,Northwest Territories,Storage & Organization,0.57
-442,"SAFCO PlanMaster Heigh-Adjustable Drafting Table Base, 43w x 30d x 30-37h, Black",Doug Bickford,52321,5626.42,349.45,60,Northwest Territories,Tables,
+442,"SAFCO PlanMaster Heigh-Adjustable Drafting Table Base, 43w x 30d x 30-37h, Black",Doug Bickford,52321,5626.42,349.45,60,Northwest Territories,Tables,1
 443,Canon S750 Color Inkjet Printer,Susan Vittorini,52386,-188.58,120.97,26.3,Northwest Territories,Office Machines,0.38
 444,Panasonic KP-310 Heavy-Duty Electric Pencil Sharpener,Andrew Gjertsen,52807,204.74,21.98,2.87,Northwest Territories,Pens & Art Supplies,0.55
 445,"AT&T Black Trimline Phone, Model 210",Muhammed MacIntyre,52929,-90.14,15.99,9.4,Northwest Territories,Office Machines,0.49
@@ -509,7 +508,7 @@ Id,FirstName,LastName,Quantity,Expenses,Income,Bonus,District,OrderList,RateOfIn
 508,"Tennsco Snap-Together Open Shelving Units, Starter Sets and Add-On Units",Jack Lebron,4007,-232.24,279.48,35,Prince Edward Island,Storage & Organization,0.8
 509,GBC DocuBind P100 Manual Binding Machine,Erica Bern,4416,2665.4,165.98,19.99,Prince Edward Island,Binders and Binder Accessories,0.4
 510,Avery 497,Erica Bern,4454,21.42,3.08,0.5,Prince Edward Island,Labels,0.37
-511,SAFCO Folding Chair Trolley,Helen Abelman,5153,1467.82,128.24,12.65,Prince Edward Island,Chairs & Chairmats,
+511,SAFCO Folding Chair Trolley,Helen Abelman,5153,1467.82,128.24,12.65,Prince Edward Island,Chairs & Chairmats,1
 512,"Manila Recycled Extra-Heavyweight Clasp Envelopes, 6"" x 9""",Guy Armstrong,5446,44.1,10.98,4.8,Prince Edward Island,Envelopes,0.36
 513,"Verbatim DVD-RAM, 5.2GB, Rewritable, Type 1, DS",Helen Abelman,8131,191.29,29.89,1.99,Prince Edward Island,Computer Peripherals,0.5
 514,Keytronic Designer 104- Key Black Keyboard,Christopher Schild,8994,-580.32,40.48,19.99,Prince Edward Island,Computer Peripherals,0.77
@@ -600,7 +599,7 @@ Id,FirstName,LastName,Quantity,Expenses,Income,Bonus,District,OrderList,RateOfIn
 599,"IBM Multi-Purpose Copy Paper, 8 1/2 x 11"", Case",Hilary Holden,28995,73.19,30.98,5.76,Prince Edward Island,Paper,0.4
 600,Southworth 25% Cotton Premium Laser Paper and Envelopes,Hilary Holden,28995,80.92,19.98,8.68,Prince Edward Island,Paper,0.37
 601,Timeport L7089,Jack Lebron,29121,575.33,125.99,7.69,Prince Edward Island,Telephones and Communication,0.58
-602,Safco Contoured Stacking Chairs,Filia McAdams,29319,1151.69,238.4,24.49,Prince Edward Island,Chairs & Chairmats,
+602,Safco Contoured Stacking Chairs,Filia McAdams,29319,1151.69,238.4,24.49,Prince Edward Island,Chairs & Chairmats,1
 603,Canon PC-428 Personal Copier,Filia McAdams,29319,983.55,199.99,24.49,Prince Edward Island,Copiers and Fax,0.46
 604,Staples Standard Envelopes,Greg Guthrie,29382,78.96,5.68,1.39,Prince Edward Island,Envelopes,0.38
 605,12-1/2 Diameter Round Wall Clock,Greg Guthrie,29382,35.09,19.98,10.49,Prince Edward Island,Office Furnishings,0.49
@@ -904,7 +903,7 @@ Id,FirstName,LastName,Quantity,Expenses,Income,Bonus,District,OrderList,RateOfIn
 903,Euro Pro Shark Stick Mini Vacuum,Alex Avila,1856,-712.14,60.98,49,British Columbia,Appliances,0.59
 904,M3682,Alex Avila,1856,973.16,125.99,8.08,British Columbia,Telephones and Communication,0.57
 905,StarTAC 6500,Alex Avila,1856,676.13,125.99,8.8,British Columbia,Telephones and Communication,0.59
-906,SAFCO Arco Folding Chair,Brian Moss,1925,67.84,276.2,24.49,British Columbia,Chairs & Chairmats,
+906,SAFCO Arco Folding Chair,Brian Moss,1925,67.84,276.2,24.49,British Columbia,Chairs & Chairmats,1
 907,Eldon Advantage® Chair Mats for Low to Medium Pile Carpets,Emily Grady,2848,-303.62,43.31,15.9,British Columbia,Office Furnishings,0.75
 908,SC7868i,Emily Grady,2848,-264.28,125.99,8.99,British Columbia,Telephones and Communication,0.55
 909,HP Office Recycled Paper (20Lb. and 87 Bright),Anna Andreadi,5504,-20.33,5.78,7.64,British Columbia,Paper,0.36

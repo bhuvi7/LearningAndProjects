@@ -4,9 +4,17 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name="Customer_Info")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
 	
 	@Id
@@ -19,11 +27,11 @@ public class Customer {
 	@Column(name="Quantity")
 	private int quantity;
 	@Column(name="Expense")
-	private int expense;
+	private float expense;
 	@Column(name="income")
-	private int income;
+	private float income;
 	@Column(name="Bonus")
-	private int Bonus;
+	private float Bonus;
 	@Column(name="District")
 	private String district;
 	@Column(name="Order_list")
