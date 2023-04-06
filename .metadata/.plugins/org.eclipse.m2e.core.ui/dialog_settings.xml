@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\Bhuvanesh\Microservice\dockerImage"/>
+			<item value="D:\Bhuvanesh\Microservice\kubernetes"/>
 			<item value="D:\Bhuvanesh\Microservice\batch-processing"/>
 			<item value="D:\Bhuvanesh\Microservice\jwttokens"/>
 			<item value="D:\Bhuvanesh\Microservice\vin-service"/>

@@ -1,0 +1,299 @@
+<app-card cardClass="card-datatable" [options]="false">
+    <div>
+        <div *ngIf="loading">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-grow text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-success" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-danger" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-dark" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!loading">
+            <div class="row">
+                <div class="col-lg-12">
+                    <table>
+                        <tr>
+                            <td><b> EQUIPMENT BILLING HISTORY as on {{selectedDate}} </b></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr align="center">
+                            <th>state</th>
+                            <th>District</th>
+                            <th>ClinicType</th>
+                            <th>ClinicCode</th>
+                            <th>B.E Number</th>
+                            <th> acceptance date</th>
+                            <th>purchase date</th>
+                            <th>purchase cost</th> 
+                            <th>rental end dt</th>
+                            <th>rental start dt</th>
+                            <th>warranty expiry dt</th>
+                            <th>warranty start dt</th> 
+
+                        </tr>
+                    </thead>
+                
+                    <tbody >
+                        <tr>
+                            <td>Johor</td>
+                            <td>Batu Pahat</td>
+                            <td>PERGIGIAN</td>
+                            <td>JHR428</td>
+                            <td>JHNACC001</td>
+                            <td>01-06-2017</td>
+                            <td>01-06-2017</td>
+                            <td>9700.0</td> 
+                            <td>31-05-2025</td>
+                            <td>01-06-2017</td>
+                            <td>31-05-2018</td>
+                            <td>01-06-2017</td> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <b> Till 30th September 2020</b>
+                    <!-- <table class="table table-striped table-bordered table-hover">
+                        <tr>
+                            <th colspan="2"> Per Month</th>
+                            <th colspan="2"> No. of Months</th>
+                            <th colspan="2"> Value</th>
+                        </tr> -->
+                    <table  style="width: 100%; border: 2px solid black; padding: 6px;" class="table table-striped table-bordered table-hover">
+                        <tr>
+                            <td></td>
+                            <td>Per Month</td>
+                            <td>No.of Months</td>
+                            <td>Value(RM)</td>
+                        </tr>
+                        <tr>
+                            <td><b>Rental </b></td>
+                            <td style="text-align: right"> 145 </td>
+                            <td style="text-align: right">  40 </td>
+                            <td style="text-align: right">  5,800</td>
+                        </tr>
+                        <tr>
+                            <td><b>Maintenance </b></td>
+                            <td style="text-align: right"> 53 </td>
+                            <td style="text-align: right">33</td>
+                            <td style="text-align: right"> 1,749 </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td> </td>
+                            <td style="text-align: center" ><b>Total(A)</b></td>
+                            <td style="text-align: right">7549</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <b>Note: Rate per month applied in the above table are based on the latest value</b>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+                    <b> From 1st October 2020</b>
+                    <table style="width: 100%; border: 2px solid black; padding: 6px;" class="table table-striped table-bordered table-hover">
+                       
+                        <tr>
+                            <th> Year </th>
+                            <th> Rental </th>
+                            <th> Maintanence </th>
+                            <th> Civil Works </th>
+                            <th> Others</th>
+                            <th>Total(RM)</th>
+                        </tr>
+                      
+                        <tr>
+                            <!-- <td>2020 (Model for collapse)</td> -->
+                            <td class="text-left" style="color: blue;">
+                                <a href="#!" [routerLink]="['/report/invoice/app-equipment-billing-history-detail']"
+                                    style="color: blue;" (click)="openMonthContent(monthContent)"><u>2020</u></a>
+                            </td>
+                            <!-- <td style="text-align: left;">2021</td> -->
+                            <td style="text-align: right">335</td>
+                            <td style="text-align: right"> 159</td>
+                            <td style="text-align: right"> 1000 </td>
+                            <td style="text-align: right">-</td>
+                            <td style="text-align: right"> 1594</td>
+                        </tr>
+                        <tr>
+                            <!-- <td>2021 (Model for collapse)</td> -->
+                            <td class="text-left" style="color: blue;">
+                                <a href="#!" [routerLink]="['/report/invoice/app-equipment-billing-history-detail']"
+                                    style="color: blue;" (click)="openMonthContent(monthContent)"><u>2021</u></a>
+                            </td>
+                            <!-- <td style="text-align: left;">2021</td> -->
+                            <td style="text-align: right">290</td>
+                            <td style="text-align: right"> 106</td>
+                            <td style="text-align: right"> - </td>
+                            <td style="text-align: right">-</td>
+                            <td style="text-align: right">396</td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td style="text-align: center;border-right: white;border-top: white;">
+                                <b>Total(B)</b>
+                            </td>
+                            <!-- <td style="border-left: white;border-right: white;border-top: white;">
+                                <b>:</b>
+                            </td> -->
+                            <td style="text-align: right;border-left: white;border-top: white;">
+                                1990
+                            </td>
+                        </tr>
+                        <!-- <tr style="font-weight: bold;">
+                            <td colspan="2" style="text-align: left;"> TOTAL INVOICE AMOUNT</td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: right;">{{equipmentTotalValue|number:'1.2-2'}}</td>
+                        </tr> -->
+                    </table>
+                </div>
+            </div>
+            <b>Note: Rates in the above table are taken from the Invoices directly</b>
+            <br>
+            <br>
+            <!-- <div class="row">
+                <div class="col-lg-12">
+
+                    <table style="width: 100%; border: 2px solid black; padding: 6px;" class="table table-striped table-bordered table-hover"> -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <table  style="width: 100%;" class="table table-striped table-bordered table-hover">
+                        <tr style="font-weight: bold;">
+                            <td></td>
+                            <td> </td>
+                            <td> </td>
+                            <td style="text-align:right;border-right: white;border-top: white;"> TOTAL (A+B) RM</td>
+                            <td style="text-align:center;"> 9539 </td>
+                        </tr> 
+                        <tr style="font-weight: bold;">
+                            <td></td>
+                            <td> </td>
+                            <td> </td>
+                            <td style="text-align:right;border-right: white;border-top: white;">IRR</td>
+                            <td style="text-align:center;"> 23 % </td>
+                        </tr> 
+                        <tr style="font-weight: bold;">
+                            <td></td>
+                            <td> </td>
+                            <td> </td>
+                            <td style="text-align:right;border-right: white;border-top: white;">PayBack Period</td>
+                            <td style="text-align:center;"> 6 yrs </td>
+                        </tr> 
+                    </table>
+                </div>
+            </div>
+            <ng-template #monthContent let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                    <h5 class="modal-title">MonthWise split up
+                    </h5>
+                    <button class="close basic-close btn-sm float-right" aria-label="Close" style="outline: none;"
+                        (click)="c()"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <tbody>
+                                        <tr class="table-active">
+                                            <th class="text-center"></th>
+                                            <th class="text-center">Rental</th>
+                                            <th class="text-center">Maintenance</th>
+                                            <th class="text-center">Civil Works</th>
+                                            <th class="text-center">Others</th>
+                                            <th class="text-center">Total(RM)</th>
+                                        </tr>
+                                    </tbody>
+                                    <tbody *ngIf="loadingMonthTable">
+                                        <tr>
+                                            <td colspan="7">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="spinner-grow text-primary" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                    <div class="spinner-grow text-success" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                    <div class="spinner-grow text-danger" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                    <div class="spinner-grow text-dark" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody *ngIf="!loadingMonthTable">
+                                        <tr>
+                                            <td class="text-left">October </td>
+                                            <td class="text-right">145 </td>
+                                            <td class="text-right">53 </td>
+                                            <td class="text-right">1000 </td>
+                                            <td class="text-right">- </td>
+                                            <td class="text-right">1198 </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">November </td>
+                                            <td class="text-right">145 </td>
+                                            <td class="text-right">53 </td>
+                                            <td class="text-right">- </td>
+                                            <td class="text-right">- </td>
+                                            <td class="text-right">198 </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left">December </td>
+                                            <td class="text-right">145 </td>
+                                            <td class="text-right">53 </td>
+                                            <td class="text-right">- </td>
+                                            <td class="text-right">- </td>
+                                            <td class="text-right">198 </td>
+                                        </tr>
+
+                                        <tr class="table-active">
+                                            <th class="text-right"> </th>
+                                            <th class="text-right"> </th>
+                                            <th class="text-right"> </th>
+                                            <th class="text-right"> </th>
+                                            <th class="text-left">Total (RM) </th>
+                                            <th class="text-right"> 1594</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</app-card>

@@ -1,0 +1,41 @@
+<app-card [options]="false">
+  <div class="app-modal-header">
+    <h5 class="modal-title">State Details</h5>
+    <!-- <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button> -->
+  </div>
+  <div class="app-modal-body">
+    <form>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>State Name</label>
+            <input type="text" class="form-control" placeholder="State Name" name="stateName"
+              [(ngModel)]="state.stateName">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>State Code</label>
+            <input type="text" class="form-control" placeholder="State Code" name="stateCode"
+              [(ngModel)]="state.stateCode">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Active</label>
+            <select class="form-control form-control-primary" name="isActive" [(ngModel)]="state.isActive">
+              <option value="Y">Yes</option>
+              <option value="N">No</option>
+
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-danger" (click)="exit()">Close</button>
+    &nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>
+</app-card>

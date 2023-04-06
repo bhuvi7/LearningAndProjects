@@ -1,0 +1,275 @@
+<div class="row">
+    <div class="col-lg-12">
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <!-- <h4 class="modal-title" id="modal-basic-title">Hi there!</h4> -->
+                <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button> -->
+            </div>
+            <div class="modal-body">
+                <b>Do You Want To {{modalBodyContent}}?</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal()">Yes</button>
+                <button type="button" class="btn btn-danger btn-md btn-tall btn-wide" (click)="c()">No</button>
+            </div>
+        </ng-template>
+        <ng-template #invoiceDateChange let-c="close" let-d="dismiss">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <label>Invoice Date</label><br>
+                <input type="date" [(ngModel)]="invoiceDate" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal()">Generate</button>
+                <button type="button" class="btn btn-danger btn-md btn-tall btn-wide" (click)="c()">Back</button>
+            </div>
+        </ng-template>
+        <app-card cardClass="card-datatable" [hidHeader]="true" [options]="false">
+            <div>
+                <div *ngIf="loading">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!loading">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <img id="pdfImage" #pdfImage src="assets/images/qmsLogo.png" width="275px" height="175px">
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table>
+                                <tr>
+                                    <td><b> INVOICE FOR MAINTENANCE CHARGES </b></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <b> INVOICE TO:</b>
+                            <table style="width: 100%;
+                    border: 2px solid black;
+                    padding: 6px;">
+                                <tr>
+                                    <td style="text-align: left;border-right: white;border-bottom: white;">
+                                        <b>PKD/PPD </b>
+                                    </td>
+                                    <td style="border-left: white;border-right: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td style="text-align: left;border-left: white;border-bottom: white;">
+                                        {{fin02b.clinicTypeCode}}- {{fin02b.districtName}}
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>ADDRESS </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: start;border-left: white;border-top: white;border-bottom: white;">
+                                        {{clinicAddress}}
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>ADDRESS </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: start;border-left: white;border-top: white;border-bottom: white;">
+                                        {{districtAddress}}
+                                    </td>
+                                </tr> -->
+
+                                <tr>
+                                    <td style="text-align: left;border-right: white;border-top: white;">
+                                        <b>MONTH/YEAR </b>
+                                    </td>
+                                    <td style="border-left: white;border-right: white;border-top: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td style="text-align: left;border-left: white;border-top: white;">
+                                        {{monthYear}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-3" style="align-items: flex-start;">
+                            <br>
+                        </div>
+                        <div class="col-lg-4">
+                            <b>FORM FIN 02-B</b>
+                            <table style="width: 100%;
+                    border: 2px solid black;
+                    padding: 6px;">
+                                <tr>
+                                    <td style="text-align: left;"><b>DOC REF:</b></td>
+                                    <td style="text-align: right;"><b>{{docRef}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;"><b>DATE:</b></td>
+                                    <td style="text-align: right;"><b>{{date}}</b></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-striped table-bordered table-hover">
+                                <tr>
+                                    <th>PKD/PPD NAME</th>
+                                    <th>REFERENCE</th>
+                                    <th>GROSS CHARGES (RM)</th>
+                                    <th>PENALTY (RM)</th>
+                                    <th>NET CHARGES PAYABLE (RM)</th>
+                                </tr>
+                                <tr>
+                                    <td>{{cimsHistoryFin02b.clinicTypeCode}} - {{cimsHistoryFin02b.districtName}} </td>
+                                    <td> BASE FEE {{show}} </td>
+                                    <td style="text-align: right;"> {{cimsHistoryFin02b.totalEbeValue|number:'1.2-2'}}
+                                    </td>
+                                    <td> - </td>
+                                    <td style="text-align: right;"> {{cimsHistoryFin02b.totalEbeValue|number:'1.2-2'}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> &nbsp; </td>
+                                    <td> &nbsp; </td>
+                                    <td> &nbsp; </td>
+                                    <td> &nbsp; </td>
+                                    <td> &nbsp; </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td> &nbsp; </td>
+                                    <td> &nbsp; </td>
+                                    <td> &nbsp; </td>
+                                    <td> &nbsp; </td>
+                                </tr>
+                                <tr>
+                                    <td> &nbsp; </td>
+                                    <td> &nbsp; </td>
+                                    <td> &nbsp; </td>
+                                    <td> &nbsp; </td>
+                                </tr> -->
+                                <tr style="font-weight: bold;">
+                                    <td colspan="2" style="text-align: left;"> TOTAL INVOICE AMOUNT (Excluding SST)</td>
+                                    <td style="text-align: right;"> {{fin02b.invoiceBaseValue|number:'1.2-2'}} </td>
+                                    <td> - </td>
+                                    <td style="text-align: right;"> {{fin02b.invoiceBaseValue|number:'1.2-2'}} </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td colspan="4" style="text-align: left;">SST Amount({{sstPercentage}}%)</td>
+                                    <td style="text-align: right;"> {{fin02b.sst|number:'1.2-2'}} </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td colspan="4" style="text-align: left;">TOTAL INVOICE AMOUNT(Inclusive of SST)
+                                    </td>
+                                    <td style="text-align: right;"> {{fin02b.totalInvoiceValue|number:'1.2-2'}} </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div *ngIf="isApproved" class="row">
+                        <div class="col-lg-12">
+                            <i><b> (Ringgit Malaysia : {{invoiceTotalValueInWords}} ONLY)</b></i>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div *ngIf="enabler">
+                        <div class="alert alert-info">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            Please Wait Till Your Transaction Is Being Processed
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div id="loading-mask">
+                        </div>
+
+
+                    </div>
+                    <div *ngIf="showButtons">
+                        <div *ngIf=showSaveSubmitButton style="padding-top: 15px;">
+                            <!-- <button class="btn btn-info btn-md btn-tall btn-wide"
+                                (click)="openModal(content,'Save')">Save</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp; -->
+                            <button class="btn btn-success btn-md btn-tall btn-wide"
+                                (click)="openModal(content,'Submit')">Submit</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-danger btn-md btn-tall btn-wide" (click)="navToList()">Back</button>
+                        </div>
+                        <div *ngIf=!showSaveSubmitButton style="padding-top: 15px;">
+                            <button class="btn btn-success btn-md btn-tall btn-wide" [disabled]="disableApprove"
+                                (click)="openModal(content,'Approve')">Approve</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button *ngIf="this.fin02b.status == 'FOR APPROVAL TO MOH'"
+                                class="btn btn-success btn-md btn-tall btn-wide"
+                                (click)="openModal(invoiceDateChange,'invoiceDateChange')">PDF</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-danger btn-md btn-tall btn-wide" (click)="navToList()">Back</button>
+                        </div>
+                    </div>
+                    <div *ngIf="!showButtons">
+                        <div *ngIf="isApproved" style="padding-top: 15px;">
+                            <button class="btn btn-success btn-md btn-tall btn-wide"
+                                (click)="downloadPdf()">PDF</button> &nbsp;
+                            &nbsp;
+                            <button class="btn btn-danger btn-md btn-tall btn-wide" (click)="navToList()">Back</button>
+                        </div>
+                        <div *ngIf="!isApproved" style="padding-top: 15px;">
+                            <button class="btn btn-danger btn-md btn-tall btn-wide" (click)="navToList()">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+</div>

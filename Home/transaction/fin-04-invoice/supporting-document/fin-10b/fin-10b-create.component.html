@@ -1,0 +1,274 @@
+<div class="row">
+    <div class="col-md-12">
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header"> </div>
+            <div class="modal-body">
+                <b>Do You Want To {{modalBodyContent}}?</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal()">Yes</button>
+                <button type="button" class="btn btn-danger btn-md btn-tall btn-wide" (click)="c()">No</button>
+            </div>
+        </ng-template>
+        <app-card cardTitle="Create Page" [options]="false">
+            <div>
+                <div *ngIf="loading">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!loading">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4">
+
+                                <div>
+                                    <label> <b>State</b> </label>
+
+                                    <select class="form-control form-control-primary" id="state" name="state"
+                                        [value]="clinic.stateId" (change)="handleForm($event)">
+                                        <option value='0'>Select</option>
+                                        <option *ngFor="let state of states" value={{state.id}}>
+                                            {{state.stateName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div>
+                                    <label> <b>District</b> </label>
+
+                                    <select class="form-control form-control-primary" id="district" name="district"
+                                        [value]="clinic.districtId" (change)="handleForm($event)">
+                                        <option value='0'>Select</option>
+                                        <option *ngFor="let district of districts" value={{district.id}}>
+                                            {{district.districtName}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div>
+                                    <label><b>Clinic Type</b></label>
+
+                                    <select class="form-control form-control-primary" id="clinicType" name="clinicType"
+                                        [value]="clinic.clinicTypeId" (change)="handleForm($event)">
+                                        <option value='0'>Select</option>
+                                        <option *ngFor="let clinicType of clinicTypes" value={{clinicType.id}}>
+                                            {{clinicType.clinicTypeCode}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div>
+                                    <label><b>Clinic Name</b></label>
+
+
+                                    <ng-select [ngClass]="'ng-select'" [options]="simpleOption" name="clinicName"
+                                        id="clinicName" [disabled]="!ngBoolean" [(ngModel)]="clinic.clinicId"
+                                        (click)="handleForm($event)">
+                                    </ng-select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label><b>Asset Name</b></label>
+
+                                    <select class="form-control form-control-primary" id="assetType" name="assetType"
+                                    [disabled]="!ngBoolean" [(ngModel)]="assetName" aria-placeholder="select">
+                                        <option *ngFor="let asset of assetTypes" [value]="asset.name">
+                                            {{asset.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div>
+                                    <label><b>BE Number</b></label>
+
+                                    <ng-select [ngClass]="'custom'" [options]="beNumbers" name="beNumber"
+                                        placeholder="Select BE Number" id="beNumber" [(ngModel)]="beNumber">
+                                    </ng-select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+
+
+                                <label><b>Date</b></label>
+                                <input type="date" class="form-control " id="invoiceDateFrom" [disabled]="loadings"
+                                    [max]="this.curDate" onkeydown="return false" (click)="curDatePicker()"
+                                    (change)="datePicker()" [(ngModel)]="this.selectedDate" name="invoiceDateFrom">
+
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                    <br>
+                    <br>
+                    <div *ngIf="this.constructionWorks.length != 0">
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Type Of Expense</th>
+                                        <th>Name Of Supplier</th>
+                                        <th>CW Final BQ Cost</th>
+                                        <th>Tender Ref No</th>
+                                        <th>Award/Contract Ref No</th>
+                                        <th>Practical Completion Ref No</th>
+                                        <th>Tc No</th>
+                                        <th>Acceptance Ref</th>
+                                        <th>Agreed Total</th>
+                                        <!-- <th>Action</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of constructionWorks;let i=index">
+                                        <td>{{i+1}}</td>
+                                        <td>Preliminaries,Design & Build,Civil & Structure,Electrical, Mechanical,
+                                            Plumbing, misc associated works aircond</td>
+                                        <td>{{data.nameOfSupplier}}</td>
+                                        <td style="text-align: right;">{{data.cwFinalBqCost|number:'1.2-2'}}</td>
+                                        <td>{{data.tenderRefNo}}</td>
+                                        <td>{{data.letterOfAwardOrContractRefNo}}</td>
+                                        <td>{{data.certOfPracticalCompletionRefNo}}</td>
+                                        <td>{{data.certOfTcNo}}</td>
+                                        <td>{{data.certOfAcceptanceRef}}</td>
+                                        <td style="text-align: right;">{{data.agreedTotal|number:'1.2-2'}}</td>
+                                        <!-- <td>
+                                            <button class="btn btn-success btn-md btn-tall btn-wide"
+                                                (click)="removeConstructionWork(i)">Delete</button>
+                                        </td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <button class="btn btn-success btn-md btn-tall btn-wide" [disabled]="disableCreate"
+                            (click)="openModal(content,'Create')">Create
+                            Fin10b</button> &nbsp;&nbsp;
+                        <button class="btn btn-success btn-md btn-tall btn-danger" [disabled]="disableCreate"
+                            (click)="navToList()">Back</button>
+                    </div>
+                    <div *ngIf="this.constructionWorks.length == 0">
+                        <button class="btn btn-success btn-md btn-tall btn-danger" (click)="navToList()">Back</button>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+
+        <app-card cardTitle="Summary" [options]="false">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label><b>Type Of Expense</b></label>
+                        <input class="form-control" name="typeOfExpense"
+                            placeholder="Preliminaries,Design & Build,Civil & Structure,Electrical, Mechanical, Plumbing, misc associated works aircond"
+                            [(ngModel)]="constructionWork.typeOfExpense" readonly [disabled]="isDisabled">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label><b>Name Of Supplier</b></label>
+                        <select class="form-control form-control-primary" id="supplierName" name="nameOfSupplier"
+                            [(ngModel)]="constructionWork.nameOfSupplier" aria-placeholder="sss">
+                            <option *ngFor="let sup of supplierNames" [value]="sup.name">
+                                {{sup.name}}</option>
+                        </select>
+
+
+
+
+
+                        <!-- <ng-select  class=" form-control-primary" id="sup" name="sup" [virtualScroll]="true" [(ngModel)]="selectedlist" >
+
+                            <ng-option  style="height: 30px;">
+                              {{sup.name}}</ng-option> 
+                          </ng-select> -->
+
+                        <!-- <ng-select [(ngModel)]="selectedlist" [virtualScroll]="true"   >
+                        <ng-option *ngFor="let as of assetNames"  style="height: 30px;" >
+                          {{as.name}}</ng-option>
+                      </ng-select> -->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label><b>CW FINAL BQ COST (RM)</b></label>
+                    <input type="number" class="form-control" placeholder="Enter Amount" name="cwFinalBqCost"
+                        [(ngModel)]="constructionWork.cwFinalBqCost" (keydown.arrowup)="false" (keydown.arrowdown)="false"/>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+
+                        <label><b>TENDER REFERNCE NUMBER</b></label>
+                        <select class="form-control form-control-primary" id="tenderNos" name="tenderNos"
+                            [(ngModel)]="constructionWork.tenderRefNo">
+                            <option *ngFor="let ten of tenderNo" [value]="ten.name">
+                                {{ten.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label><b>LETTER OF AWARD/ CONTRACT REFERENCE NUMBER</b></label>
+                    <input type="text" class="form-control" placeholder="Enter Contract Ref No"
+                        name="letterOfAwardOrContractRefNo"
+                        [(ngModel)]="constructionWork.letterOfAwardOrContractRefNo" />
+                </div>
+                <div class="col-md-4">
+                    <label><b>CERTIFICATE OF PRACTICAL COMPLETION REFERNCE NUMBER</b></label>
+                    <input type="text" class="form-control" placeholder="Enter Ref No"
+                        name="certOfPracticalCompletionRefNo"
+                        [(ngModel)]="constructionWork.certOfPracticalCompletionRefNo">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <label><b>CERTIFICATE OF T&C S/N NUMBER</b></label>
+                    <input type="text" class="form-control" placeholder="Enter T/C Certificate No" name="certOfTcNo"
+                        [(ngModel)]="constructionWork.certOfTcNo">
+                </div>
+                <div class="col-md-4">
+                    <label><b>CERTIFICATE OF ACCEPTANCE REFERNCE NUMBER</b></label>
+                    <input type="text" class="form-control" placeholder="Enter Ref No" name="certOfAcceptanceRef"
+                        [(ngModel)]="constructionWork.certOfAcceptanceRef">
+                </div>
+                <div class="col-md-4">
+                    <label><b>AGREED TOTAL (RM)</b></label>
+                    <input type="number" class="form-control" placeholder="like 19,248.80" name="agreedTotal"
+                        [(ngModel)]="constructionWork.agreedTotal" (keydown.arrowup)="false" (keydown.arrowdown)="false"/>
+                </div>
+            </div>
+            <br><br>
+            <button class="btn btn-info btn-md btn-tall btn-wide" (click)="addConstructionWork()">Add</button>
+        </app-card>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<app-card [options]="false">
+    <div class="app-modal-header">
+      <h5 class="modal-title">Circle Details</h5>
+      <!-- <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button> -->
+    </div>
+    <div class="app-modal-body">
+     <form>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+                <label>State Name</label>
+                <select class="form-control form-control-primary"  [(ngModel)]="circle.stateName"
+                    name="stateName">
+                    <option *ngFor="let data of states" value="{{data.stateName}}">{{data.stateName}}</option>
+
+                </select>
+            </div>
+        </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Circle Code</label>
+              <input type="text" class="form-control" placeholder="Circle Code" name="circleCode"[(ngModel)]="circle.circleCode">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Circle Name</label>
+              <input type="text" class="form-control" placeholder="Circle Name" name="circleName"[(ngModel)]="circle.circleName">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Active</label>
+              <select class="form-control form-control-primary"  name="isActive"[(ngModel)]="circle.isActive">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+  
+              </select>
+            </div>
+          </div>
+        </div>
+     </form>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="exit()">Close</button>
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+    </div>
+  </app-card>

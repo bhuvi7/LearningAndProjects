@@ -1,0 +1,323 @@
+<div class="row">
+
+  <div class="col-md-12">
+
+    <app-card cardTitle="Fin09 List" cardClass="card-datatable" [options]="false">
+
+
+      <div class="col-md-12">
+        <a (click)="downloadPdf()" class=" float-right" style="margin-top: -50px;margin-right: 180px;z-index: 50;"
+          href="#!" [routerLink]="['/transaction/fin-09-invoice/fin-09-view']"><svg xmlns="http://www.w3.org/2000/svg"
+            x="0px" y="0px" width="48" height="48" viewBox="0 0 172 172" style=" fill:#000000;">
+            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+              stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+              font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+              <path d="M0,172v-172h172v172z" fill="none"></path>
+              <g fill="#e74c3c">
+                <path
+                  d="M43,14.33333c-7.84216,0 -14.33333,6.49117 -14.33333,14.33333v35.83333c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v35.83333c0,7.91917 6.41417,14.33333 14.33333,14.33333v14.33333c0,7.84216 6.49117,14.33333 14.33333,14.33333h86c7.84216,0 14.33333,-6.49117 14.33333,-14.33333v-93.16667l-35.83333,-35.83333zM43,28.66667h57.33333v28.66667h28.66667v7.16667h-86zM28.66667,78.83333h10.75c5.934,0 10.75,4.816 10.75,10.75c0,5.934 -4.816,10.75 -10.75,10.75h-3.58333v14.33333h-7.16667zM93.16667,78.83333h21.5v7.16667h-14.33333v7.16667h11.46386v7.16667h-11.46386v14.33333h-7.16667zM57.33333,79.00131h11.67383c11.33767,0 16.99284,6.81885 16.99284,15.08919v5.52898c0,8.37067 -5.66716,15.0472 -17.09082,15.0472h-11.57585zM35.83333,86v7.16667h3.58333c1.978,0 3.58333,-1.60533 3.58333,-3.58333c0,-1.978 -1.60533,-3.58333 -3.58333,-3.58333zM64.5,86.16797v21.33203h4.40918c4.52933,0 9.92415,-1.3732 9.92415,-7.88053v-5.52898c0,-6.55033 -5.33984,-7.92252 -9.82617,-7.92252zM43,129h86v14.33333h-86z">
+                </path>
+              </g>
+            </g>
+          </svg></a>
+        <a (click)="generateExcel()" class="float-right" style="margin-top: -50px;margin-right: 130px;z-index: 50;;"
+          href="#!" [routerLink]="['/transaction/fin-09-invoice/fin-09-view']"><svg xmlns="http://www.w3.org/2000/svg"
+            x="0px" y="0px" width="48" height="48" viewBox="0 0 172 172" style=" fill:#000000;">
+            <g transform="">
+              <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                style="mix-blend-mode: normal">
+                <path d="M0,172v-172h172v172z" fill="none"></path>
+                <g id="original-icon" fill="#2ecc71">
+                  <path
+                    d="M43,14.33333c-7.84216,0 -14.33333,6.49117 -14.33333,14.33333v35.83333c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v35.83333c0,7.91917 6.41417,14.33333 14.33333,14.33333v14.33333c0,7.84216 6.49117,14.33333 14.33333,14.33333h86c7.84216,0 14.33333,-6.49117 14.33333,-14.33333v-93.16667l-35.83333,-35.83333zM43,28.66667h57.33333v28.66667h28.66667v7.16667h-86zM28.84863,78.83333h8.94434l5.19303,12.30371l5.20703,-12.30371h8.93034l-9.08431,17.7627l9.29427,18.07064h-9.04232l-5.30501,-12.52767l-5.27702,12.52767h-9.04232l9.28027,-18.07064zM64.5,78.83333h7.16667v28.66667h14.33333v7.16667h-21.5zM103.84668,78.83333c10.19817,0.29383 10.81999,9.19416 10.81999,10.77799h-6.94271c0,-0.73817 0.12474,-4.99707 -4.00326,-4.99707c-1.25417,0 -4.06428,0.55575 -3.84928,4.01725c0.20783,3.17483 4.38421,4.67423 5.15104,5.01106c1.60533,0.58767 9.55171,4.12789 9.61621,11.35189c0.01433,1.53367 -0.38218,9.5647 -10.65202,9.6722c-11.17283,0.12183 -11.92578,-9.4927 -11.92578,-11.47786h6.9847c0,1.0535 0.08925,6.14709 4.94109,5.75293c2.91683,-0.24367 3.55298,-2.34294 3.65332,-3.90527c0.16483,-2.63017 -2.3454,-4.21131 -4.99707,-5.48698c-3.72667,-1.79167 -9.62069,-3.99362 -9.72819,-10.97396c-0.09317,-6.28517 4.52496,-9.92135 10.93196,-9.74219zM43,129h86v14.33333h-86z">
+                  </path>
+                </g>
+                <path d="" fill="none"></path>
+                <path d="" fill="none"></path>
+              </g>
+            </g>
+          </svg> </a>
+      </div>
+      <div class="table-responsive">
+
+        <div>
+
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>State</label>
+                  <select class="form-control form-control-primary" id="state" name="state" [value]="stateFilter"
+                    (change)="handleForm($event)">
+                    <option value="">Select</option>
+                    <option *ngFor="let state of stateFilterDatas" value="{{state.stateName}}">
+                      {{state.stateName}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>District</label>
+                  <select class="form-control form-control-primary" id="district" name="district"
+                    [value]="districtFilter" (change)="handleForm($event)">
+                    <option value="">Select</option>
+                    <option *ngFor="let district of districtFilterDatas" value="{{district.districtName}}">
+                      {{district.districtName}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Clinic Type</label>
+                  <select class="form-control form-control-primary" id="clinicType" name="clinicType"
+                    [value]="clinicTypeFilter" (change)="handleForm($event)">
+                    <option value="">All</option>
+                    <option value="1">PKD</option>
+                    <option value="2">PPD</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label>Quarter</label>
+                <select class="form-control form-control-primary" id="quater" name="quater" [value]=quater
+                  (change)="handleForm($event)">
+                  <option value="">All</option>
+                  <option value="Q1">Q1</option>
+                  <option value="Q2">Q2</option>
+                  <option value="Q3">Q3</option>
+                  <option value="Q4">Q4</option>
+
+
+                </select>
+
+              </div>
+              <div class="form-group col-md-4">
+                <label>Year</label>
+                <select class="form-control form-control-primary" id="year" name="year" [value]=year
+                  (change)="handleForm($event)">
+                  <option value="">All</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+
+                <!-- <div class="form-group">
+                    <button class="btn btn-primary" style="margin-top: 25px; margin-left: 20px;" (click)="resetFilter()">Reset
+                      All</button>
+                  </div> -->
+
+                <button class="btn btn-primary float-right" style="margin-top: 25px; margin-left: 20px;"
+                  (click)="resetFilter()">Reset All </button>
+                <button class="btn btn-primary float-right" style="margin-top: 25px; margin-left: 20px;"
+                  (click)="filterFunction()">Go </button>
+
+              </div>
+            </div>
+          </form>
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+            class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Fin Ref No</th>
+                <th>Month</th>
+                <th>Quarter</th>
+                <th>Year</th>
+                <th>FIN09-A AMT</th>
+                <th>FIN09-B AMT</th>
+                <th>FIN09-C AMT</th>
+                <th>FIN09-D AMT</th>
+                <th>FIN09-E AMT</th>
+                <th>Total Penalty</th>
+                <th>Total Unadjusted Penalty</th>
+                <th>Remark/Comment</th>
+                <th>Status</th>
+
+
+
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let user of users;let i=index">
+                <td>{{ i+1}}</td>
+                <!-- <td>{{ user.code }}</td> -->
+                <!-- /transaction/fin-09-invoice/fin-09 -->
+                <td> <a style="color: blue;" href="#!"
+                    [routerLink]="['/IdeassionCIMSAPP/src/app/pages/home/transaction/fin-09-invoice/']"
+                    (click)="getInvoiceById(user.id);modalDefault.show()"><u>{{ user.code }}</u></a> </td>
+
+                <td>{{ user.approvalMonth }}</td>
+                <td>{{ user.approvalQuater }}</td>
+                <td>{{ user.approvalYear }}</td>
+                <td style="text-align: right;">{{ user.totalResponseTimePenalty|number:'1.2-2'}}</td>
+                <td style="text-align: right;">{{ user.totalRepairTimePenalty |number:'1.2-2'}}</td>
+                <td style="text-align: right;">{{ user.totalUptimePenalty |number:'1.2-2'}}</td>
+                <td style="text-align: right;">{{ user.totalScheduledMaintenancePenalty |number:'1.2-2'}}</td>
+                <td style="text-align: right;">{{ user.totalLateDeliveryPenalty |number:'1.2-2'}}</td>
+                <td style="text-align: right;">{{ user.totalPenaltyPermanent |number:'1.2-2'}}</td>
+                <td style="text-align: right;">{{ user.totalPenalty |number:'1.2-2'}}</td>
+                <td>{{ user.remarks }}</td>
+                <td>{{ user.status }}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<app-ui-modal #modalDefault [dialogClass]="'modal-lg'">
+
+
+
+  <div class="app-modal-header">
+    <h5 *ngIf="!loadingModal" class="modal-title">{{invoice.code}}</h5>
+    <button class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span
+        aria-hidden="true">&times;</span></button>
+
+    <a class="float-right" style="margin-top: 0px; position: relative; left: 400px; bottom: 37px;" href="#!"
+      [routerLink]="['/transaction/fin-09-invoice/fin-09']"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="48" height="48" viewBox="0 0 172 172" (click)="downloadPdfInv()" style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+          stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+          font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+          <path d="M0,172v-172h172v172z" fill="none"></path>
+          <g fill="#e74c3c">
+            <path
+              d="M43,14.33333c-7.84216,0 -14.33333,6.49117 -14.33333,14.33333v35.83333c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v35.83333c0,7.91917 6.41417,14.33333 14.33333,14.33333v14.33333c0,7.84216 6.49117,14.33333 14.33333,14.33333h86c7.84216,0 14.33333,-6.49117 14.33333,-14.33333v-93.16667l-35.83333,-35.83333zM43,28.66667h57.33333v28.66667h28.66667v7.16667h-86zM28.66667,78.83333h10.75c5.934,0 10.75,4.816 10.75,10.75c0,5.934 -4.816,10.75 -10.75,10.75h-3.58333v14.33333h-7.16667zM93.16667,78.83333h21.5v7.16667h-14.33333v7.16667h11.46386v7.16667h-11.46386v14.33333h-7.16667zM57.33333,79.00131h11.67383c11.33767,0 16.99284,6.81885 16.99284,15.08919v5.52898c0,8.37067 -5.66716,15.0472 -17.09082,15.0472h-11.57585zM35.83333,86v7.16667h3.58333c1.978,0 3.58333,-1.60533 3.58333,-3.58333c0,-1.978 -1.60533,-3.58333 -3.58333,-3.58333zM64.5,86.16797v21.33203h4.40918c4.52933,0 9.92415,-1.3732 9.92415,-7.88053v-5.52898c0,-6.55033 -5.33984,-7.92252 -9.82617,-7.92252zM43,129h86v14.33333h-86z">
+            </path>
+          </g>
+        </g>
+      </svg></a>
+  </div>
+  <div class="app-modal-body">
+    <div>
+      <div *ngIf="loadingModal">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-dark" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!loadingModal">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>State</label>
+              <input type="text" class="form-control" [value]="this.invoice.stateName" readonly />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>District</label>
+              <input type="text" class="form-control" [value]="this.invoice.districtName" readonly />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Penalty Approval Date</label>
+              <input type="text" class="form-control" [value]="this.approvalDateDisplay" readonly />
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Total Response Time (FIN 09-A)</label>
+              <input type="text" class="form-control" [value]="this.invoice.totalResponseTimePenalty|number:'1.2-2'"
+                readonly />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Total Repair Time (FIN 09-B)</label>
+              <input type="text" class="form-control" [value]="this.invoice.totalRepairTimePenalty|number:'1.2-2'"
+                readonly />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Total Up Time (FIN 09-C)</label>
+              <input type="text" class="form-control" [value]="this.invoice.totalUptimePenalty|number:'1.2-2'"
+                readonly />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Total Scheduled Maintenance (FIN 09-D)</label>
+              <input type="text" class="form-control"
+                [value]="this.invoice.totalScheduledMaintenancePenalty|number:'1.2-2'" readonly />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Total Late Delivery (FIN 09-E)</label>
+              <input type="text" class="form-control" [value]="this.invoice.totalLateDeliveryPenalty|number:'1.2-2'"
+                readonly />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Total Penalty</label>
+              <input type="Text" class="form-control" [value]="this.invoice.sumOfTotalPenalty|number:'1.2-2'"
+                readonly />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Pending Penalty</label>
+              <input type="Text" class="form-control" [value]="this.invoice.totalPenalty|number:'1.2-2'" readonly />
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <b> Fin09 Adjustment History </b>
+          <table class="table table-bordered text-center">
+            <thead>
+              <th> Invoice No </th>
+              <th> Penalty Adjusted Date </th>
+              <th> Adjusted Amount </th>
+              <!-- <th> Bank Ref No </th> -->
+              <th> Credit Note Ref No </th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of invoice.invoicePaymentHistory">
+                <td>{{data.invoiceNo}}</td>
+                <td> {{data.paymentDateDisplay}} </td>
+                <td style="text-align: right;"> {{data.paymentReceived|number:'1.2-2'}} </td>
+                <!-- <td> {{data.paymentRefNo}} </td> -->
+                <td> {{data.transactionRefNo}} </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="app-modal-footer">
+
+    <button class="btn btn-primary btn-sm" (click)="modalDefault.hide()">Back</button>
+  </div> -->
+</app-ui-modal>

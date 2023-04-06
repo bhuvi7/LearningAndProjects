@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-lg-12">      
+      <app-card cardTitle="Pending Approvals" cardClass="card-datatable" [options]="false">
+        <!-- <button class="btn btn-primary float-right btn-md btn-tall btn-wide" style="margin-top: -50px;z-index: 50;"
+          (click)="radioSelect()" [disabled]="buttonEnableBoolean">
+          New</button> -->
+        <div class="table-responsive">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+            class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th> File Name</th>
+                <th> Comment  </th>
+                <th> Action </th>
+                <!-- <th> File Name</th>
+                <th>Invoice Type</th> -->
+              </tr>
+            </thead>
+            <tbody *ngIf="loading">
+              <tr>
+                <td colspan="4">
+                  <div class="d-flex justify-content-center">
+                    <div class="spinner-grow text-primary" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-success" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-danger" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-dark" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>  
+            </tbody>
+            <tbody *ngIf="!loading">
+              <tr *ngFor="let data of filterDatas;let i = index">                
+                <td> {{i+1}} </td>
+                <!-- <td ><a  href=" {{data.fileLink}} " download="file">{{data.fileName}}</a>  </td> -->
+                <td ><a  href=" {{data.fileLink}} " download=""  (click)="download(data.fileLink,data.fileName)" >{{data.fileName}}</a>  </td>
+                <td><input type="text" class="form-control"  placeholder="Comment"   [(ngModel)]="data.comment" (change)="enableButton(data.comment,i)"> </td>
+                <td> 
+                  <!-- <div *ngIf="!data.comment">Reason for Approval or Rejection </div> -->
+                  <div >
+                    <button type="button" class="btn btn-primary" (click)="toApprove(data.comment)" [disabled]="buttonEnable[i]">
+                        Approve</button> &nbsp; 
+                    <button type="button" class="btn btn-danger" (click)="toReject(data.comment)" [disabled]="buttonEnable[i]">
+                          Reject</button>
+                </div>  
+                </td>
+                <!-- <td> {{data.fileName}}</td>
+                <td> {{data.invoiceType}} </td>   -->
+              </tr>
+            </tbody>
+          </table>
+        </div>  
+      </app-card>
+    </div>
+  </div>

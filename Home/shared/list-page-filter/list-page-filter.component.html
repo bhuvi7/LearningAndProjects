@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-card cardTitle="Filter" cardClass="card-datatable" [options]="false">
+        <div class="row" *ngIf="!loading">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>State</label>
+              <select class="form-control form-control-primary" id="state" name="state" [value]="stateId"
+                (change)="handleForm($event)">
+                <option value="-999" >Select</option>
+                <option *ngFor="let state of states" [selected]="stateId==state.id" value="{{state.id}}">{{state.stateName}}</option>
+              </select>
+            </div>
+          </div>
+          <!-- <div *ngIf="user.organisationId==1  && ( userLevel=='HO' || userLevel=='STATE' || userLevel=='CIRCLE')" class="col-md-3">
+            <div class="form-group">
+              <label>Circle</label>
+              <select class="form-control form-control-primary" id="circle" name="circle" [value]="circleId"
+                (change)="handleForm($event)">
+                <option value="0">Select</option>
+                <option *ngFor="let circle of circles" [selected]="circleId==circle.id"  value="{{circle.id}}">
+                  {{circle.circleName}}</option>
+              </select>
+            </div>
+          </div> -->
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>District</label>
+              <select class="form-control form-control-primary" id="district" name="district" [value]="districtId"
+                (change)="handleForm($event)">
+                <option value="-999" >Select</option>
+                <option *ngFor="let district of districts" [selected]="districtId==district.id" value="{{district.id}}">
+                  {{district.districtName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <button class="btn btn-primary" style="margin-top: 25px; margin-left: 20px;" [disabled]="disableButton" (click)="go()">Go</button>
+              <button class="btn btn-primary" style="margin-top: 25px; margin-left: 20px;" [disabled]="disableButton" (click)="resetFilter()">Reset All</button>
+            </div>
+      
+          </div>
+        </div>
+        <div  *ngIf="loading">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+    </app-card>
+  </div>
+</div>

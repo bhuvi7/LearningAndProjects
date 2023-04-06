@@ -1,0 +1,126 @@
+<div class="row">
+  
+    <div class="col-md-12">
+      <app-card cardTitle="" cardClass="card-datatable" [options]="false">
+        <form>
+            <div class="row">
+             
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>User Group Level</label>
+                  <select class="form-control form-control-primary" name="userGroupMasterList" [(ngModel)]="this.filteredGroupMasterId"  (change)="handleForm()">
+                    <option value="Y">Select</option>
+                    <option *ngFor="let group of userGroupMasters" [value]="group.id">{{group.name}}</option>
+    
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <!-- <label>District</label> -->
+                  <button  class="btn btn-primary" style="margin-top: 25px; margin-left: 20px;" (click)="resetFilter()">Reset</button>
+                </div>
+              </div>
+            </div>
+          </form>
+    </app-card> 
+      <app-card cardClass="card-datatable" [options]="false">  
+        <button type="button" class="btn btn-primary float-right" *ngIf="addFlag" style="margin-top: -50px;z-index: 50;" (click)="modalDefault.show();addUserRoleMapping()">Add Mapping</button>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr align="center">
+                <th>#</th>
+                <th>Group</th>
+                <th>Role</th>
+                <th>Active</th>
+                <th>Action</th>
+               
+              </tr>
+            </thead> 
+            <tbody *ngIf="loading">
+              <tr>
+                <td colspan="7">
+                  <div class="d-flex justify-content-center">
+                    <div class="spinner-grow text-primary" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-success" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-danger" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-dark" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tbody  *ngIf="!loading">
+              <tr *ngFor="let groupRole of userGroupRoleMappingList;let i = index" >
+                <td>{{i+1}}</td>
+                <td>{{groupRole.userGroupName}}</td>
+                <td>{{groupRole.userRoleName}}</td>
+                <td>{{(groupRole.isActive=="Y"?"Yes":"No")}}</td>
+                <td align="center">
+                  <button type="button" class="btn btn-info btn-sm" (click)="modalDefault.show();editUserRoleMapping(groupRole)" ><i class="fas fa-edit"></i></button>&nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-danger btn-sm" (click)="confirmAlert(groupRole)" > <i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </app-card>
+    </div>
+  </div>
+  <app-ui-modal #modalDefault>
+    <div class="app-modal-header">
+      <h5 class="modal-title">User Group Role Mapping Detail</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+     <form>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>User Group</label>
+              <select class="form-control form-control-primary"  [(ngModel)]="this.userGroupRoleMapping.userGroupId" name="userGroup">
+                <option>Select</option>
+                <option *ngFor="let group of activeUserGroups"    value="{{group.id}}" [selected]="this.userGroupRoleMapping.userGroupId==group.id" >{{group.groupName}}</option>
+             
+
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>User Role</label>
+              <select class="form-control form-control-primary"  [(ngModel)]="this.userGroupRoleMapping.userRoleId"  name="userRole">
+                <option>Select</option>
+              <option *ngFor="let role of activeUserRoles"  value="{{role.id}}" [selected]="this.userGroupRoleMapping.userRoleId==role.id" >{{role.roleName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Active</label>
+              <select class="form-control form-control-primary"  [(ngModel)]="this.userGroupRoleMapping.isActive"  name="isActive">
+                <!-- <option value="Y">Yes</option>
+                <option value="N">No</option> -->
+                <option *ngFor="let active of actives"  value="{{active.value}}" [selected]="this.userGroupRoleMapping.isActive==active.value" >{{active.name}}</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+     </form>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalDefault.hide()">Close</button>
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" (click)="modalDefault.hide();saveUserGroupRoleMapping();">Save</button>
+    </div>
+  </app-ui-modal>

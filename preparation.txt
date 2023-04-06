@@ -1,0 +1,25 @@
+project explanation
+batch features
+jpa configuration
+job configuration & steps
+properties configuration
+restart jobs
+JWT tokens
+restapi producer consumer
+what are the DB's used
+application deployed
+
+store credit card details
+jvm details
+spring batch programming
+Job architecture
+SQL queries
+spring collections
+hastmap vs hasttable
+spring mvc architecture
+how to restart spring job fails
+Docker
+
+
+
+ 

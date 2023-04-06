@@ -1,0 +1,131 @@
+<div class="row">
+
+  <div class="col-md-12">
+    <app-card [options]="false">
+ 
+      <!-- <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <div class="col-lg-9">
+            <div *ngIf="this.stateName == ''">
+              <b>{{modalBodyContent}} - Revenue Contribution : RM</b><b style="color: purple;">
+                {{invoiceTableTotal|number}}</b>
+            </div>
+            <div *ngIf="this.stateName != '' && this.districtName == ''">
+              <b>{{modalBodyContent}} - Revenue Contribution ({{stateName}} State) : RM</b><b style="color: purple;">
+                {{invoiceTableTotal|number}}</b>
+            </div>
+            <div *ngIf="this.stateName != '' && this.districtName != ''">
+              <b>{{modalBodyContent}} - Revenue Contribution ({{stateName}} State / {{districtName}} District) :
+                RM</b><b style="color: purple;">
+                {{invoiceTableTotal|number}}</b>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <button class="close basic-close btn-sm" aria-label="Close" style="outline: none;" (click)="c()"><span
+                aria-hidden="true">&times;</span></button>
+            <button class="btn btn-success btn-sm float-right">PDF</button>
+          </div>
+          <h4 class="modal-title" id="modal-basic-title">
+          </h4>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th *ngIf="this.stateName == '' && this.districtName == ''"> State </th>
+                  <th *ngIf="this.stateName != '' && this.districtName == ''"> District </th>
+                  <th> Clinic Type</th>
+                  <th> Invoice Number </th>
+                  <th> Invoice Amount </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of invoiceTableData;let i=index">
+                  <td> {{i+1}} </td>
+                  <td *ngIf="this.stateName == '' && this.districtName == ''"> {{data.stateName}} </td>
+                  <td *ngIf="this.stateName != '' && this.districtName == ''"> {{data.districtName}} </td>
+                  <td> {{data.clinicTypeCode}}</td>
+                  <td> {{data.invoiceNo}} </td>
+                  <td> {{data.totalInvoiceValue|number}} </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </ng-template>
+      <div class="col-md-12 text-center" style="margin-bottom:20px; font-weight: bold;">
+        <h5 class="text-center"> {{this.headingState}} Revenue Contribution till {{this.currentDate}} - RM
+          {{this.headingAmount | number}} {{(this.stateName!=""?" for "+this.stateName +"  State ":"")}}
+          {{(this.districtName!=""?" / "+this.districtName + "  District":"")}} </h5>
+      </div>
+      <div class="col-md-8 float-left">
+        <button type="button" class="btn btn-info float-left btn-sm" (click)="backButton()"
+          style="margin-left: 150px;"><i class="fas fa-arrow-circle-left"></i></button>
+        <div class="col-md-6" style="margin-left: 400px;"> Amount in '000</div>
+        <canvas baseChart (chartClick)="clickFn($event)" [datasets]="pieChartData" [labels]="chartLabels"
+          [chartType]="pieChartType" [options]="pieChartOptions"></canvas>
+
+      </div>
+      <div class="col-md-4 float-right">
+        <table class="table table-bordered">
+          <tbody>
+            <tr class="table-active">
+              <th>Invoice Type</th>
+              <th>Amount in RM</th>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr *ngFor="let invoice of invoiceTypes">
+              <td><a style="color:#000" href="#!" [routerLink]="['/dashboard-progress']"
+                  (click)="openModal(content,invoice.invoiceTypeName)"><u
+                    style="color: blue;">{{invoice.invoiceTypeName}}</u></a></td>
+              <td class="text-right">{{invoice.totalInvoiceValue|number}}</td>
+            </tr>
+            <tr class="table-active">
+              <td style="font-size:16px"><b>Total</b></td>
+              <td class="text-right" style="font-size:16px"><b>{{totalInvoiceAmount|number}}</b></td>
+            </tr>
+           
+          </tbody>
+        </table>
+        <table class="table table-bordered text-center ageingTable">
+
+      
+          <tbody>
+
+          <tbody>
+            <tr *ngFor="let invoice of invoiceByQuaters; let i = index">
+              <td *ngIf="i==0" class="bgWhite" [attr.rowspan]="invoiceByQuaters.length">{{invoice.year}}</td>
+              <td class="text-left">{{invoice.quater}}</td>
+              <td class="text-right">{{invoice.totalInvoiceValue|number}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+
+
+
+      <div class="col-md-6 float-left" style="margin-top: 100px;">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+          [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+
+      </div>
+
+      <div class="col-md-6 float-right" style="margin-top: 100px;">
+
+
+        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+          [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+          [plugins]="lineChartPlugins">
+        </canvas>
+      </div>
+
+    </app-card>
+
+  </div>
+</div>

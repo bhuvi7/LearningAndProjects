@@ -1,0 +1,152 @@
+<div class="row">
+    <div class="col-lg-12">
+        <app-card cardClass="card-datatable" [options]="false">
+            <div class="row">
+                <div class="col-lg-12">
+                    <table>
+                        <tr>
+                            <td><b>CREDIT NOTE</b></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-6">
+                    <b>CREDIT NOTE TO:</b>
+                    <table>
+                        <tr>
+                            <td style="text-align: left;border-right: white;border-bottom: white;">
+                                JKN NAME
+                            </td>
+                            <td style="border-left: white;border-right: white;border-bottom: white;">
+                                <b>:</b>
+                            </td>
+                            <td style="text-align: left;border-left: white;border-bottom: white;">
+                                <b>KLUANG</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border-right: white;border-top: white;border-bottom: white;"></td>
+                            <td style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                            </td>
+                            <td style="border-left: white;border-top: white;border-bottom: white;"></td>
+                        </tr>
+                        <tr>
+                            <td style="border-right: white;border-top: white;border-bottom: white;"></td>
+                            <td style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                            </td>
+                            <td style="border-left: white;border-top: white;border-bottom: white;"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                JKN ADDRESS
+                            </td>
+                            <td style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                <b>:</b>
+                            </td>
+                            <td style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                <b>PEJABAT KESIHATAN DEARAH</b><br>
+                                <b>NO23 & 25, JALAN 2/8, JENDERIN BARU</b><br>
+                                <b>MERIJANG</b><br>
+                                <b>68200 KATU CHARES</b>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-3">
+                    <br>
+                </div>
+                <div class="col-lg-3">
+                    <table>
+                        <tr>
+                            <td style="text-align: left;"><b>CN REF:</b></td>
+                            <td style="text-align: right;"><b>QMS-CNNSBPKD001/20</b></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;"><b>DATE:</b></td>
+                            <td style="text-align: right;"><b>31/01/2020</b></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+                    <table>
+                        <tr>
+                            <th> DESCRIPTION </th>
+                            <th> GROSS AMOUNT </th>
+                            <th> 6% SST </th>
+                            <th> NET AMOUNT </th>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Over bill for Maintenance Charges <b>NSB030373</b> (Digital
+                                Imaging Systems,<br>
+                                Computer, Radiography)</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">District : PKD KLUANG</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Year 2020 :</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">JAN</td>
+                            <td>614.80</td>
+                            <td>-</td>
+                            <td>614.80</td>
+                        </tr>
+                        <!-- <tr>
+                            <td style="text-align: left;">February 2020(FIN09SLR/GBK/PKD/2020/02)</td>
+                            <td>640.00</td>
+                            <td>38.40</td>
+                            <td>678.40</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">March 2020(FIN09SLR/GBK/PKD/2020/03)</td>
+                            <td>900.00</td>
+                            <td>54.00</td>
+                            <td>954.00</td>
+                        </tr> -->
+                        <!-- <tr *ngFor="let data of equipmentDatas">
+                            <td style="text-align: left;">{{data.beGeneralName}}</td>
+                            <td>{{data.beNumber}}</td>
+                            <td>{{data.serialNo}}</td>
+                            <td>{{data.modelNo}}</td>
+                            <td>{{data.purchaseCost.toFixed(2)}}</td>
+                            <td>{{data.certificateTcRef}}</td>
+                        </tr> -->
+                        <tr style="font-weight: bold;font-style: italic;">
+                            <td> TOTAL AMOUNT</td>
+                            <td>614.80</td>
+                            <td>-</td>
+                            <td>614.80</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <div class="col-lg-12">
+                <b>{{equipmentTotalValueInWords}}</b>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br>
+            <div style="padding-top: 15px;">
+                <button class="btn btn-success btn-md btn-tall btn-wide" (click)="createCreditNote()">Generate</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-danger btn-md btn-tall btn-wide" (click)="navToList()">Cancel/Exit</button>
+            </div>
+        </app-card>
+
+    </div>
+</div>

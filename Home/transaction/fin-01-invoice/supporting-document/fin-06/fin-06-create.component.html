@@ -1,0 +1,259 @@
+<div class="row">
+    <div class="col-lg-12">
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <!-- <h4 class="modal-title" id="modal-basic-title">Hi there!</h4> -->
+                <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button> -->
+            </div>
+            <div class="modal-body">
+                <b>Do You Want To {{modalBodyContent}}?</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal()">Yes</button>
+                <button type="button" class="btn btn-danger btn-md btn-tall btn-wide" (click)="c()">No</button>
+            </div>
+        </ng-template>
+        <ng-template #content1 let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">{{equipment.assetName}}</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label> Remarks </label>
+                    <input class="form-control" type="text" [(ngModel)]="equipment.remarks" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal1()">Save</button>
+            </div>
+        </ng-template>
+        <app-card cardClass="card-datatable" [options]="false">
+            <div>
+                <div *ngIf="loading">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!loading">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <table style="width: 100%;
+                    border: 2px solid black;
+                    padding: 6px;">
+                                <tr>
+                                    <td style="text-align: left;border-right: white;border-bottom: white;">
+                                        <b>STATE </b>
+                                    </td>
+                                    <td style="border-left: white;border-right: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td style="text-align: left;border-left: white;border-bottom: white;">
+                                        {{stateName}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>DISTRICT </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{districtName}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>CLINIC NAME </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{clinicName}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>CLINIC CODE </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{clinicCode}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;border-right: white;border-top: white;">
+                                        <b>MONTH/YEAR </b>
+                                    </td>
+                                    <td style="border-left: white;border-right: white;border-top: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td style="text-align: left;border-left: white;border-top: white;">
+                                        {{monthYear}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-3">
+                            <br>
+                        </div>
+                        <div class="col-lg-3">
+                            <b>FORM FIN 06</b>
+                            <table style="width: 100%;
+                    border: 2px solid black;
+                    padding: 6px;">
+                                <tr>
+                                    <td style="text-align: left;"><b>DOC REF:</b></td>
+                                    <td style="text-align: right;"><b>{{docRef}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;"><b>DATE:</b></td>
+                                    <td style="text-align: right;"><b>{{date}}</b></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div *ngIf="!displaySelectedEquip" class="row">
+                        <div class="col-lg-12">
+                            <h6>LIST OF PURCHASED BIOMEDICAL EQUIPMENT YET TO BE ADDED</h6>
+                            <table>
+                                <!-- <tr>
+                            <th colspan="7"></th>
+                        </tr> -->
+                                <tr>
+                                    <th></th>
+                                    <th>ASSET NAME </th>
+                                    <th> BE NUMBER </th>
+                                    <th> SERIAL NO </th>
+                                    <th> MODEL NO </th>
+                                    <!-- <th> Installed Date </th>
+                                    <th> Purchased Date </th>
+                                    <th> Accepted Date </th> -->
+                                    <th> VALUE(RM) </th>
+                                    <!-- <th> CERT OF T&C REF </th> -->
+                                </tr>
+                                <tr *ngFor="let data of equipmentDatas">
+                                    <td><input type="checkbox" [value]="data.id" [checked]="data.checked"
+                                            (change)="addRemoveEquip($event,content1)"></td>
+                                    <td style="text-align: left;">{{data.assetName}}</td>
+                                    <td>{{data.beNumber}}</td>
+                                    <td>{{data.serialNumber}}</td>
+                                    <td>{{data.modelNumber}}</td>
+                                    <!-- <td>{{data.installedDateDisplay}}</td>
+                                    <td>{{data.purchasedDateDisplay}}</td>
+                                    <td>{{data.acceptedDateDisplay}}</td> -->
+                                    <td style="text-align: right;">{{data.purchaseAmount|number:'1.2-2'}}</td>
+                                    <!-- <td>{{data.tcCertificate}}</td> -->
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-12" *ngIf="!isFin06Created">
+                            <br>
+                            <button class="btn btn-primary btn-md btn-tall btn-wide" [disabled]="disableCreate"
+                                (click)="displaySelectedEquipment()">
+                                Select
+                                Equiment</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div *ngIf="displaySelectedEquip">
+                        <h6>SELECTED PURCHASED BIOMEDICAL EQUIPMENT </h6>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <table>
+                                    <!-- <tr>
+                            <th colspan="7"></th>
+                        </tr> -->
+                                    <tr>
+                                        <th>ASSET NAME </th>
+                                        <th> BE NUMBER </th>
+                                        <th> SERIAL NO </th>
+                                        <th> MODEL NO </th>
+                                        <!-- <th> Installed Date </th>
+                                        <th> Purchased Date </th>
+                                        <th> Accepted Date </th> -->
+                                        <th> VALUE(RM) </th>
+                                        <th> CERT OF T&C REF </th>
+                                    </tr>
+                                    <tr *ngFor="let data of selectedEquipments">
+                                        <td style="text-align: left;">{{data.assetName}}</td>
+                                        <td>{{data.beNumber}}</td>
+                                        <td>{{data.serialNumber}}</td>
+                                        <td>{{data.modelNumber}}</td>
+                                        <!-- <td>{{data.installedDateDisplay}}</td>
+                                        <td>{{data.purchasedDateDisplay}}</td>
+                                        <td>{{data.acceptedDateDisplay}}</td> -->
+                                        <td style="text-align: right;">{{data.purchaseAmount|number:'1.2-2'}}</td>
+                                        <td>
+                                            <div class="input-wrapper">
+                                                <input type="text" [value]="data.tcCertificate"
+                                                    (keyup)="handleChange($event,data.id)" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-weight: bold;">
+                                        <td style="text-align: left;"> TOTAL </td>
+                                        <td> {{equipmentCount}} </td>
+                                        <td></td>
+                                        <td></td>
+                                        <!-- <td></td>
+                                        <td></td>
+                                        <td></td> -->
+                                        <td style="text-align: right;"> {{equipmentTotalValue|number:'1.2-2'}} </td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="padding-top: 15px;">
+                        <div *ngIf="!isFin06Created">
+                            <button class="btn btn-success btn-md btn-tall btn-wide" [disabled]="disableCreate"
+                                (click)="openModal(content,'Create')">Create Fin06</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-danger btn-md btn-tall btn-wide" [disabled]="disableCreate"
+                                (click)="navToList()">Cancel/Exit</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div *ngIf="isFin06Created">
+                            <button class="btn btn-danger btn-md btn-tall btn-wide"
+                                (click)="navToList()">Cancel/Exit</button>
+                        </div>
+                        <!-- <button class="btn btn-warning btn-md btn-tall btn-wide" (click)="navToList()">Pdf</button> -->
+                    </div>
+                </div>
+            </div>
+        </app-card>
+
+    </div>
+</div>

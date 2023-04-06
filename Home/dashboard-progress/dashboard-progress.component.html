@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <ngb-tabset>
+      <ngb-tab *ngIf="invoiceGenerationFlag" title="Invoice">
+        <ng-template ngbTabContent>
+          <invoice-generation></invoice-generation>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab *ngIf="revenueAnalysisFlag" title="Revenue Analysis">
+        <ng-template ngbTabContent>
+          <revenue-analysis></revenue-analysis>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab *ngIf="accountReceivablesFlag" title="Account Receivables">
+        <ng-template ngbTabContent>
+          <account-receivables></account-receivables>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab *ngIf="retentionFlag" title="Retention">
+        <ng-template ngbTabContent>
+          <retention></retention>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab *ngIf="unadjustedPenalitiesFlag" title="Unadjusted Penalties">
+        <ng-template ngbTabContent>
+          <unadjusted-penalties></unadjusted-penalties>
+        </ng-template>
+      </ngb-tab>
+      <!-- <ngb-tab title="Pending Penalities">
+            <ng-template ngbTabContent>
+              <pending-penalities></pending-penalities>
+            </ng-template>
+          </ngb-tab> -->
+      <ngb-tab *ngIf="backlogInvoicesFlag" title="Backlog Invoices ">
+        <ng-template ngbTabContent>
+          <backlog-invoices></backlog-invoices>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab *ngIf="eisFlag" title="EIS">
+        <ng-template ngbTabContent>
+          <revenue-budget></revenue-budget>
+        </ng-template>
+      </ngb-tab>
+
+    </ngb-tabset>
+
+  </div>
+
+
+</div>

@@ -1,0 +1,123 @@
+<app-card [options]="false">
+    <div class="app-modal-header">
+        <h5 class="modal-title">Clinic Details</h5>
+        <!-- <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button> -->
+    </div>
+    <br>
+    <div class="app-modal-body">
+        <form>
+            <div class="row">
+                <!-- <div class="col-md-4">
+                            <div class="form-group">
+                                <label>State Name</label>
+                                <select class="form-control form-control-primary"  [(ngModel)]="clinic.stateName"
+                                    name="stateName">
+                                    <option *ngFor="let data of states" value="{{data.stateName}}">{{data.stateName}}</option>
+        
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>District Name</label>
+                                <input type="text" class="form-control" placeholder="District Name"
+                                    name="district Name" [(ngModel)]="clinic.districtName">
+                            </div>
+                        </div> -->
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>State Name</label>
+                        <select class="form-control form-control-primary" id="state" name="state" [value]="stateFilter"
+                            (change)="handleForm($event)" [(ngModel)]="clinic.stateId">
+                            <option value="">Select</option>
+                            <option *ngFor="let state of stateFilterDatas" value="{{state.id}}">
+                                {{state.stateName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>District Name</label>
+                        <select class="form-control form-control-primary" id="district" name="district"
+                            [value]="districtFilter" (change)="handleForm($event)" [(ngModel)]="clinic.districtId">
+                            <option value="">Select</option>
+                            <option *ngFor="let district of districtFilterDatas" value="{{district.id}}">
+                                {{district.districtName}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Clinic Code</label>
+                        <input type="text" class="form-control" placeholder="Clinic Code" name="clinicCode"
+                            [(ngModel)]="clinic.clinicCode">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Clinic Type</label>
+                        <select class="form-control form-control-primary" [(ngModel)]="clinic.clinicTypeId"
+                            name="clinicTypeId">
+                            <option value="1">PKD</option>
+                            <option value="2">PPD</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Clinic Name</label>
+                        <textarea class="form-control" placeholder="Clinic Name" name="name"
+                            [(ngModel)]="clinic.clinicName"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Clinic Address</label>
+                        <textarea class="form-control" placeholder="Clinic Address" name="address"
+                            [(ngModel)]="clinic.address"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Clinic Email</label>
+                        <input type="text" class="form-control" placeholder="clinic Email" name="clinic Email"
+                            [(ngModel)]="clinic.clinicEmail">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" class="form-control" placeholder="Phone Number" name="phoneNumber"
+                            [(ngModel)]="clinic.phoneNumber">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Is Active</label>
+                        <select class="form-control form-control-primary" [(ngModel)]="clinic.isActive" name="isActive">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="app-modal-footer">
+        <button type="button" class="btn btn-success" (click)="save()"> Save</button>
+        &nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-danger" (click)="exit()"> Exit</button>
+    </div>
+</app-card>

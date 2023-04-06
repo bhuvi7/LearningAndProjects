@@ -1,0 +1,118 @@
+<div class="row">
+
+    <div class="col-md-12">
+        <app-card cardTitle="Invoice Type Detail" [options]="false">
+            <div *ngIf="loading">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-grow text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-danger" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-dark" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!loading">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Invoice Type Name</label>
+                                <input type="text" class="form-control" placeholder="Invoice Type Name"
+                                    name="invoiceTypeName" [(ngModel)]="invoiceType.invoiceTypeName">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Invoice Type Code</label>
+                                <input type="text" class="form-control" placeholder="Invoice Type Code"
+                                    name="invoiceTypeCode" [(ngModel)]="invoiceType.invoiceTypeCode">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Active</label>
+                                <select class="form-control form-control-primary" [(ngModel)]="invoiceType.isActive"
+                                    name="isActive">
+                                    <option value="Y">Yes</option>
+                                    <option value="N">No</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Penalty Adjustment Applicable</label>
+                                <select class="form-control form-control-primary"
+                                    [(ngModel)]="invoiceType.penaltyAdjustmentApplicable"
+                                    name="penaltyAdjustmentApplicable">
+                                    <option value="Y">Yes</option>
+                                    <option value="N">No</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Retention Available</label>
+                                <select class="form-control form-control-primary" (change)="handleRetention()"
+                                    [(ngModel)]="invoiceType.retentionAvailable" name="retentionAvailable">
+                                    <option value="Y">Yes</option>
+                                    <option value="N">No</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Retention Percentage</label>
+                                <input type="text" class="form-control" placeholder="Retention Percentage"
+                                    name="retentionPercentage" [(ngModel)]="invoiceType.retentionPercentage"
+                                    [disabled]="retentionDisable">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Sst Included</label>
+                                <select class="form-control form-control-primary" [(ngModel)]="invoiceType.sstIncluded"
+                                    (change)="handleSst()" name="sstIncluded">
+                                    <option value="Y">Yes</option>
+                                    <option value="N">No</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Sst Percentage</label>
+                                <input type="text" class="form-control" placeholder="Sst Percentage"
+                                    name="sstPercentage" [(ngModel)]="invoiceType.sstPercentage"
+                                    [disabled]="sstDisable">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-success" (click)="save()"> Save</button>
+
+                        </div>
+                        <div class="col-auto">
+
+                            <button type="button" class="btn btn-danger" (click)="exit()"> Exit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </app-card>
+    </div>
+</div>

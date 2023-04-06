@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+    border: 2px solid black;
+    padding: 6px;
+  }
+
+th {
+ // background-color: grey;
+  border: 2px solid black;
+  text-align: center;
+  padding: 6px;
+}
+
+td {
+  border: 2px solid black;
+  text-align: center;
+  padding: 6px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

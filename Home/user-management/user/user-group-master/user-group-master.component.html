@@ -1,0 +1,92 @@
+<div class="row">
+  
+    <div class="col-md-12">
+          
+      <app-card cardTitle="Set Group Level" cardClass="card-datatable" [options]="false">  
+        <!-- <button type="button" class="btn btn-primary float-right" style="margin-top: -50px;z-index: 50;" (click)="modalDefault.show();addUserGroupMaster()"> Add User Group Level</button> -->
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr align="center">
+                <th>#</th>
+                <th>Level Name</th>
+                <th>No Of Level</th>
+                <th>Priority</th>
+                <th>Action</th>
+               
+              </tr>
+            </thead> 
+            <tbody *ngIf="loading">
+              <tr>
+                <td colspan="7">
+                  <div class="d-flex justify-content-center">
+                    <div class="spinner-grow text-primary" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-success" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-danger" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-dark" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="!loading">
+              <tr *ngFor="let group of userGroupMasters;let i = index" >
+                <td>{{i+1}}</td>
+                <td>{{group.name}}</td>
+                <td>{{group.noOfLevel}}</td>
+                <td>{{group.groupMasterPriority}}</td>
+                <td align="center">
+                  <button type="button" class="btn btn-info btn-sm" (click)="modalDefault.show();editUserGroupMaster(group)" ><i class="fas fa-edit"></i></button>&nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-danger btn-sm"  (click)="confirmAlert(group);" > <i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </app-card>
+    </div>
+  </div>
+  <app-ui-modal #modalDefault>
+    <div class="app-modal-header">
+      <h5 class="modal-title">Set Group Level</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+     <form>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Level Name</label>
+              <input type="text" class="form-control" placeholder="Level Name" name="userGroupMasterName" disabled [(ngModel)]="this.userGroupMaster.name" >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>No Of Level</label>
+              <input type="text" class="form-control" placeholder="No Of Level" name="noOfLevel" [(ngModel)]="this.userGroupMaster.noOfLevel"
+                >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Priority</label>
+              <input type="text" class="form-control" placeholder="Level Name" name="groupMasterPriority" disabled [(ngModel)]="this.userGroupMaster.groupMasterPriority" >
+            </div>
+          </div>
+   
+        </div>
+     </form>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalDefault.hide();">Close</button>
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" (click)="modalDefault.hide();saveUserGroupMaster();">Save</button>
+    </div>
+  </app-ui-modal>

@@ -1,0 +1,225 @@
+<div class="row">
+
+  <div class="col-md-12">
+    <app-card cardTitle="User Detail" [options]="false"  *ngIf="!loading">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" placeholder="Name" name="name" [(ngModel)]="user.name">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Designation</label>
+              <input type="text" class="form-control" placeholder="Designation" name="designation"
+                [(ngModel)]="user.designation">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Active</label>
+              <select class="form-control form-control-primary" [(ngModel)]="user.isActive" name="isActive">
+                <!-- <option value="Y">Yes</option>
+                <option value="N">No</option> -->
+                <option *ngFor="let active of actives"  value="{{active.value}}" [selected]="this.user.isActive==active.value" >{{active.name}}</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Organisation</label>
+              <select class="form-control form-control-primary" [(ngModel)]="user.organisationId" name="userOrganisationId">
+                <option *ngFor="let org of organisations" [selected]="user.organisationId===org.id" value="{{org.id}}">{{org.name}}</option>          
+
+              </select>
+            </div>
+          </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Application</label>
+                <select class="form-control form-control-primary" [(ngModel)]="user.applicationId" name="userApplicationId">
+                  <option *ngFor="let app of applications" [selected]="user.applicationId===app.id" value="{{app.id}}">{{app.name}}</option>          
+  
+                </select>
+              </div>
+            </div>
+      
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Email Id</label>
+              <input type="text" class="form-control"  placeholder="Email Id" name="email Id"
+                [(ngModel)]="user.email">
+            </div>
+          </div>
+          <!-- <div class="col-md-4">
+            <div class="form-group">
+              <label>Password</label>
+              <input type="text" class="form-control" placeholder="Password" name="password"
+                [(ngModel)]="user.password">
+            </div>
+          </div> -->
+           
+        </div>
+        <div class="row">
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Menu mapping User Group</label>
+              <input type="text" class="form-control" placeholder="Menu mapping User Group" name="menuMapping" disabled
+                [(ngModel)]="user.menuMappingGroupName">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="table-responsive">
+        <table  class="table table-striped table-bordered table-hover">
+          <thead>
+            <th>Level</th>
+            <th>State</th>
+            <th>Circle</th>
+            <th>District</th> 
+            <th>Clinic</th>         
+            <th>User Group </th>
+            <th>Roles</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let userDetail of user?.userDetails;let i=index;">
+              <td>  
+                <select class="form-control" [(ngModel)]="userDetail.userLevel" (change)="selectedLevel(userDetail,i,'');handleGroup(userDetail,i)"  name="userLevelId">
+                  <option *ngFor="let org of userLevels" [selected]="userDetail.userLevel == org.value"  [value]="org.value">{{org.name}}</option>            
+                </select>             
+                <!-- <select class="form-control" [(ngModel)]="userDetail.userLevel" (change)="selectedLevel(userDetail,i,'');handleGroup(userDetail,i)"  name="userLevelId">
+                  <option *ngFor="let group of userGroupMasters" [selected]="userDetail.userLevel == group.name"  [value]="group.name">{{group.name}}</option>            
+                </select> -->
+              </td>
+            <td>
+               <ng-container *ngFor="let state of stateMulArr[i]">
+                <select class="form-control form-control-primary" (change)="handleState(userDetail.stateId,i)" [(ngModel)]="userDetail.stateId" name="stateId">
+                  <!-- <option value="0">All</option> -->
+                  <option *ngFor="let s of states" [selected]="userDetail.stateId == s.id" [value]="s.id">{{s.stateName}}</option>  
+                </select> 
+              </ng-container>
+            </td>
+             
+            <td> 
+                <ng-container *ngFor="let circle of circleMulArr[i]">
+                  <select class="form-control form-control-primary" [(ngModel)]="userDetail.circleId" [disabled]="disableCircles[i]" name="circle">
+                    <!-- <option  value="0">All</option> -->
+                    <option *ngFor="let c of circle" [selected]="userDetail.circleId==c.id" [value]="c.id" >{{c.circleName }}</option>
+                  </select>
+              </ng-container>
+            </td>
+            <td>
+              <ng-container *ngFor="let district of districtMulArr[i]">
+              <select class="form-control form-control-primary" [(ngModel)]="userDetail.districtId" (change)="handleDistrict(userDetail.userLevel,userDetail.districtId,i)" [disabled]="disableDistricts[i]"   name="district">
+                <!-- <option  value="0">All</option> -->
+                <option *ngFor="let d of district"  [value]="d.id" [selected]="userDetail.stateId==d.id" >{{d.districtName}}</option>
+              </select>
+            </ng-container>
+            </td>
+            <td>
+              <ng-container *ngFor="let clinic of clinicMulArr[i]">
+              <select class="form-control form-control-primary" [(ngModel)]="userDetail.clinicId" [disabled]="disableClinics[i]"  name="clinic">
+                <!-- <option>All</option> -->
+                <option *ngFor="let c of clinic"  value="{{c.id}}" [selected]="userDetail.clinicId==c.id"  >{{c.clinicName}}</option>
+              </select>
+              </ng-container>
+            </td>
+            <td>
+              <!-- <select class="form-control form-control-primary" [(ngModel)]="userDetail.userGroupId" name="userGroupId">
+                <option *ngFor="let group of activeUserGroups"  value="{{group.id}}" [selected]="userDetail.userGroupId==group.id">{{group.groupName}}</option>
+              </select> -->
+              <ng-container *ngFor="let groups of userGroupMasterMulArr[i]">
+                <select class="form-control form-control-primary" [(ngModel)]="userDetail.userGroupId" (change)="userGroupChange(groups,userDetail)" name="userGroupId">
+                  <option *ngFor="let group of groups"  value="{{group.id}}" [selected]="userDetail.clinicId==group.id"  >{{group.groupName }}
+                </select>
+                </ng-container>
+            </td>
+            <td align="center"><button class="btn btn-primary" 
+              (click)="openRoles(userDetail);modalRole.show()">{{( userDetail.userGroupId!=null && userDetail.userGroups.length>0 !=undefined?userDetail.userGroups[0].userRoles.length:"0")}}</button></td>
+          <td align="center">
+            <button type="button" class="btn btn-info btn-sm" (click)="addUserDetail()" ><i class="fas fa-plus"></i></button>&nbsp;&nbsp;&nbsp;
+            <button *ngIf="user.userDetails.length > 1" type="button" class="btn btn-danger btn-sm" (click)="deleteUserDetail(i,userDetail)" > <i class="fas fa-minus"></i></button> 
+          </td>
+        </tr>
+          </tbody>
+        </table>
+
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-auto">
+            <button type="button" class="btn btn-success" (click)="save()"> Save</button>
+
+          </div>
+          <div class="col-auto">
+
+            <button type="button" class="btn btn-danger" (click)="exit()"> Exit</button>
+          </div>
+        </div>
+  
+
+    </app-card>
+
+    <app-card *ngIf="loading">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<app-ui-modal #modalRole>
+  <div class="app-modal-header">
+    <h5 class="modal-title">User Role Details</h5>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalRole.hide()"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="app-modal-body">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr align="center">
+          <th>#</th>
+          <th>Role Name</th>
+          <th>Role Code</th>
+          <th>Active</th>
+          
+        </tr>
+      </thead> 
+      <tbody>
+        <tr *ngFor="let role of userRoles;let i = index" >
+          <td>{{i+1}}</td>
+          <td>{{role.roleName}}</td>
+          <td>{{role.roleCode}}</td>
+          <td>{{(role.isActive=='Y'?"Yes":"No")}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalRole.hide();">Close</button>
+  </div>
+</app-ui-modal>

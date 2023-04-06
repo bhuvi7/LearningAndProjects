@@ -1,0 +1,329 @@
+<div class="row">
+    <div class="col-lg-12">
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <!-- <h4 class="modal-title" id="modal-basic-title">Hi there!</h4> -->
+                <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button> -->
+            </div>
+            <div class="modal-body">
+                <b>Do You Want To {{modalBodyContent}}?</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal()">Yes</button>
+                <button type="button" class="btn btn-danger btn-md btn-tall btn-wide" (click)="c()">No</button>
+            </div>
+        </ng-template>
+        <ng-template #invoiceDateChange let-c="close" let-d="dismiss">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <label>Invoice Date</label><br>
+                <input type="date" [(ngModel)]="invoiceDate" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal()">Generate</button>
+                <button type="button" class="btn btn-danger btn-md btn-tall btn-wide" (click)="c()">Back</button>
+            </div>
+        </ng-template>
+        <app-card cardClass="card-datatable" [hidHeader]="true" [options]="false">
+            <div>
+                <div *ngIf="loading">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!loading">
+
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4" style="align-items: center;">
+                            <img id="pdfImage" #pdfImage src="assets/images/qmsLogo.png" width="275px" height="175px">
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table>
+                                <tr>
+                                    <td><b> SUMMARY OF RENTAL CHARGES FOR NEW BIOMEDICAL EQUIPMENT INSTALLED </b></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="col-lg-5">
+                            <table style="width: 100%;
+                    border: 2px solid black;
+                    padding: 6px;">
+                                <tr>
+                                    <td style="text-align: left;border-right: white;border-bottom: white;">
+                                        <b>CLINIC NAME </b>
+                                    </td>
+                                    <td style="border-left: white;border-right: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td style="text-align: left;border-left: white;border-bottom: white;">
+                                        {{clinicName}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>CLINIC ADDRESS </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{clinicAddress}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>CLINIC CODE </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{clinicCode}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>DISTRICT </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{districtName}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>MONTH/YEAR </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{monthYear}}
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-4">
+                            <b>FORM FIN 07</b>
+                            <table style="width: 100%;
+                    border: 2px solid black;
+                    padding: 6px;">
+                                <tr>
+                                    <td style="text-align: left;"><b>DOC REF:</b></td>
+                                    <td style="text-align: right;"><b>{{docRef}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;"><b>DATE:</b></td>
+                                    <td style="text-align: right;"><b>{{date}}</b></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table>
+                                <tr>
+                                    <th colspan="2">ASSET DETAILS</th>
+                                    <th colspan="5">NEW BIOMEDICAL EQUIPMENT INSTALLED TO DATE</th>
+                                </tr>
+                                <tr>
+                                    <th>ASSET NAME </th>
+                                    <th> BE NUMBER </th>
+                                    <th> BATCH NO. </th>
+                                    <th> INSTALMENT NO. </th>
+                                    <th> VALUE OF EQUIPMENT (RM) </th>
+                                    <th> RENTAL CHARGES (RM) </th>
+                                    <th> CERT OF T&C REF </th>
+                                </tr>
+                                <tr *ngFor="let data of equipmentDatas">
+                                    <td style="text-align: left;">{{data.assetName}}</td>
+                                    <td>{{data.beNumber}}</td>
+                                    <td>{{data.batchNumber}}</td>
+                                    <td>{{data.installmentNumber}}</td>
+                                    <td style="text-align: right;">{{data.valueOfEquipment|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;">{{data.rentalCharges|number:'1.2-2'}}</td>
+                                    <td>{{data.tcCertificate}}</td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td style="text-align: left;"> TOTAL </td>
+                                    <td> {{equipmentCount}} </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align: right;"> {{equipmentsTotalRentalCharge|number:'1.2-2'}} </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div *ngIf="isApproved" class="row">
+                        <div class="col-lg-12">
+                            <i><b> (Ringgit Malaysia : {{equipmentsTotalRentalChargeInWords}} ONLY)</b></i>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="col-lg-4">
+                            <b>Prepared By,<br>
+                                <!-- NAME
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                 : {{fin07.submittedUserName}} -->
+                                HJ MOHD FAIZAL BIN HJ ABDUL MAJID
+                                <br />
+                                <!-- DESIGNATION &nbsp;: {{fin07.submittedUserDesignation}} -->
+                                SVP - Corporate Finance
+                                <br />
+                                DATE
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp; : {{fin07.approval2Date | date:'dd-MM-yyyy'}} <br>
+                                <!-- DATE
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp; : {{fin07.submittedDate  | date:'dd-MM-yyyy'}} <br> -->
+                            </b>
+                        </div>
+                        <div class="col-lg-4">
+                            <b>Checked by,<br>
+                                <!-- NAME
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp; : {{fin07.approval1UserName}} -->
+                                PRAMODAN CHINGANTAVIDA
+                                <br />
+                                <!-- DESIGNATION &nbsp;: {{fin07.approval1UserDesignation}} -->
+                                General Manager
+                                <br />
+                                <!-- DATE
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp; : {{fin07.approval1Date | date:'dd-MM-yyyy'}} <br> -->
+                                Technical Service Department
+                                <br />
+                                DATE
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp; : {{fin07.approval2Date | date:'dd-MM-yyyy'}} <br>
+                            </b>
+                        </div>
+                        <div class="col-lg-4">
+                            <b>Verified by,<br>
+                                PKD/PPD CLINICS<br>
+                                NAME
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp; : {{fin07.approval2UserName}}
+                                <br />
+                                DESIGNATION &nbsp; : {{fin07.approval2UserDesignation}}
+                                <br />
+                                DATE
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp; : <br>
+                                <!-- DATE
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp; : {{fin07.approval2Date | date:'dd-MM-yyyy'}} <br> -->
+
+                            </b>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div *ngIf="enabler">
+                        <div class="alert alert-info">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            Please Wait Till Your Transaction Is Being Processed
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div id="loading-mask">
+                        </div>
+
+
+                    </div>
+                    <div *ngIf="showButtons">
+                        <div *ngIf=showSaveSubmitButton style="padding-top: 15px;">
+                            <!-- <button class="btn btn-info btn-md btn-tall btn-wide"
+                                (click)="openModal(content,'Save')">Save</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp; -->
+                            <button class="btn btn-success btn-md btn-tall btn-wide"
+                                (click)="openModal(content,'Submit')">Submit</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-danger btn-md btn-tall btn-wide" (click)="navToList()">Back</button>
+                        </div>
+                        <div *ngIf=!showSaveSubmitButton style="padding-top: 15px;">
+                            <button class="btn btn-success btn-md btn-tall btn-wide" [disabled]="disableApprove"
+                                (click)="openModal(content,'Approve')">Approve</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button *ngIf="this.fin07.status == 'FOR APPROVAL TO MOH'"
+                                class="btn btn-success btn-md btn-tall btn-wide"
+                                (click)="openModal(invoiceDateChange,'invoiceDateChange')">PDF</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-danger btn-md btn-tall btn-wide" (click)="navToList()">Back</button>
+                        </div>
+                    </div>
+                    <div *ngIf="!showButtons">
+                        <div *ngIf="isApproved" style="padding-top: 15px;">
+                            <button class="btn btn-success btn-md btn-tall btn-wide"
+                                (click)="downloadPdf()">PDF</button> &nbsp;
+                            &nbsp;
+                            <button class="btn btn-danger btn-md btn-tall btn-wide" (click)="navToList()">Back</button>
+                        </div>
+                        <div *ngIf="!isApproved" style="padding-top: 15px;">
+                            <button class="btn btn-danger btn-md btn-tall btn-wide" (click)="navToList()">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+
+    </div>
+</div>

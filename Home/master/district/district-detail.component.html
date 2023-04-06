@@ -1,0 +1,193 @@
+       <app-card *ngIf="!newDistrict" [options]="false">
+        <div class="app-modal-header">
+          <h5 class="modal-title">District Details</h5>
+        </div>
+        <br>
+        <div class="app-modal-body">
+            <form>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <label>State Name</label>
+                        <select class="form-control form-control-primary"  [(ngModel)]="district.stateName"
+                            name="stateName">
+                            <option value="select">Select</option>
+                            <option *ngFor="let data of states" value="{{data.stateName}}">{{data.stateName}}</option>
+
+                        </select>
+                    </div>
+                </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>District Code</label>
+              <input type="text" class="form-control" placeholder="District Code" name="districtCode"
+              [(ngModel)]="district.districtCode">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>District Name</label>
+              <input type="text" class="form-control" placeholder="District Name" name="districtName"
+              [(ngModel)]="district.districtName">
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Office Pkd Name</label>
+              <textarea class="form-control"  name="OfficePkdName"
+              [(ngModel)]="district.officePkdName" [disabled]="district.officePkdName=='' ||district.officePkdName==null" ></textarea>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Office Pkd Address</label>
+              <textarea class="form-control"  name="OfficePkdAddress" 
+              [(ngModel)]="district.officePkdAddress"  [disabled]="district.officePkdAddress=='' ||district.officePkdAddress==null "></textarea>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Office Ppd Name</label>
+              <textarea class="form-control" name="OfficePpdName"
+              [(ngModel)]="district.officePpdName" [disabled]="district.officePpdName=='' ||district.officePpdName==null"></textarea>
+            </div>
+          </div>
+
+          
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Office Ppd Address</label>
+              <textarea class="form-control" name="OfficePpdAddress"
+              [(ngModel)]="district.officePpdAddress" [disabled]="district.officePpdAddress=='' ||district.officePpdAddress==null"></textarea>
+            </div>
+          </div>
+         
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Active</label>
+              <select class="form-control form-control-primary"  name="isActive"
+              [(ngModel)]="district.isActive">
+                <option value="select">Select</option>
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+  
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Circle Name</label>
+              <input type="text" class="form-control" placeholder="Circle Name" name="circleName"
+              [(ngModel)]="district.circleName">
+            </div>
+          </div>
+
+        </div>
+     </form>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="exit()">Close</button>
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+    </div>
+  </app-card>
+  <app-card *ngIf="newDistrict" [options]="false">
+    <div class="app-modal-header">
+      <h5 class="modal-title">District Details</h5>
+    </div>
+    <br>
+    <div class="app-modal-body">
+        <form>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label>State Name</label>
+                    <select class="form-control form-control-primary"  [(ngModel)]="district.stateName"
+                        name="stateName">
+                        <option value="select">Select</option>
+                        <option *ngFor="let data of states" value="{{data.stateName}}">{{data.stateName}}</option>
+
+                    </select>
+                </div>
+            </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>District Code</label>
+          <input type="text" class="form-control" placeholder="District Code" name="districtCode"
+          [(ngModel)]="district.districtCode">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>District Name</label>
+          <input type="text" class="form-control" placeholder="District Name" name="districtName"
+          [(ngModel)]="district.districtName">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Office Pkd Name</label>
+          <textarea class="form-control"  name="OfficePkdName"
+          [(ngModel)]="district.officePkdName" ></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Office Pkd Address</label>
+          <textarea class="form-control"  name="OfficePkdAddress" 
+          [(ngModel)]="district.officePkdAddress" ></textarea>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Office Ppd Name</label>
+          <textarea class="form-control" name="OfficePpdName"
+          [(ngModel)]="district.officePpdName" ></textarea>
+        </div>
+      </div>
+
+      
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Office Ppd Address</label>
+          <textarea class="form-control" name="OfficePpdAddress"
+          [(ngModel)]="district.officePpdAddress" ></textarea>
+        </div>
+      </div>
+     
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Active</label>
+          <select class="form-control form-control-primary"  name="isActive"
+          [(ngModel)]="district.isActive">
+            <option value="select">Select</option>
+            <option value="Y">Yes</option>
+            <option value="N">No</option>
+
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Circle Name</label>
+          <input type="text" class="form-control" placeholder="Circle Name" name="circleName"
+          [(ngModel)]="district.circleName">
+        </div>
+      </div>
+    </div>
+ </form>
+</div>
+<div class="app-modal-footer">
+  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="exit()">Close</button>
+  &nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+</div>
+</app-card>

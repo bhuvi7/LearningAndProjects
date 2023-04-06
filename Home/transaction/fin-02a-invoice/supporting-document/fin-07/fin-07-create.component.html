@@ -1,0 +1,247 @@
+<div class="row">
+    <!-- <div id="loading-mask" *ngIf="enabler"> -->
+    <div class="col-lg-12">
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <!-- <h4 class="modal-title" id="modal-basic-title">Hi there!</h4> -->
+                <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button> -->
+            </div>
+            <div class="modal-body">
+                <b>Do You Want To {{modalBodyContent}}?</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal()">Yes</button>
+                <button type="button" class="btn btn-danger btn-md btn-tall btn-wide" (click)="c()">No</button>
+            </div>
+        </ng-template>
+        <!-- <ng-template #content1 let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">{{equipment.assetName}}</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label> Remarks </label>
+                    <input class="form-control" type="text" [(ngModel)]="equipment.remarks" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal1()">Save</button>
+            </div>
+        </ng-template> -->
+
+        <app-card cardClass="card-datatable" [options]="false">
+            <div>
+                <div *ngIf="loading">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!loading">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table>
+                                <tr>
+                                    <td><b> CREATION OF RENTAL CHARGES FOR NEW BIOMEDICAL EQUIPMENT INSTALLED </b>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="col-lg-6">
+                            <table style="width: 100%;
+                    border: 2px solid black;
+                    padding: 6px;">
+                                <tr>
+                                    <td style="text-align: left;border-right: white;border-bottom: white;">
+                                        <b>CLINIC NAME </b>
+                                    </td>
+                                    <td style="border-left: white;border-right: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td style="text-align: left;border-left: white;border-bottom: white;">
+                                        {{clinicName}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>CLINIC ADDRESS </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{clinicAddress}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>CLINIC CODE </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{clinicCode}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b> DISTRICT </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{districtName}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b> MONTH/YEAR </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: left;border-left: white;border-top: white;border-bottom: white;">
+                                        {{monthYear}}
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div class="col-lg-3">
+                            <br>
+                        </div>
+                        <div class="col-lg-3">
+                            <b>FORM FIN 07</b>
+                            <table style="width: 100%;
+                    border: 2px solid black;
+                    padding: 6px;">
+                                <tr>
+                                    <td style="text-align: left;"><b>DOC REF:</b></td>
+                                    <td style="text-align: right;"><b>{{docRef}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;"><b>DATE:</b></td>
+                                    <td style="text-align: right;"><b>{{date}}</b></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-lg-12" style="overflow-x:auto;">
+                            <table>
+                                <tr>
+                                    <th colspan="2">ASSET DETAILS</th>
+                                    <th colspan="5">NEW BIOMEDICAL EQUIPMENT INSTALLED TO DATE </th>
+                                </tr>
+                                <tr>
+                                    <th>ASSET NAME </th>
+                                    <th> BE NUMBER </th>
+                                    <th> BATCH NO. </th>
+                                    <th> INSTALMENT NO. </th>
+                                    <th> VALUE OF EQUIPMENT(RM) </th>
+                                    <th> RENTAL CHARGES(RM) </th>
+                                    <th> CERT OF T&C REF </th>
+                                </tr>
+                                <tr *ngFor="let data of equipmentDatas;">
+                                    <td style="text-align: left;">{{data.assetName}}</td>
+                                    <td>{{data.beNumber}}</td>
+                                    <td>{{data.batchNumber}}</td>
+                                    <td>{{data.installmentNumber}}</td>
+                                    <td style="text-align: right;">{{data.valueOfEquipment|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;">{{data.rentalCharges|number:'1.2-2'}}</td>
+                                    <td>{{data.tcCertificate}}</td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td style="text-align: left;">TOTAL</td>
+                                    <td>{{equipmentCount}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align: right;">{{equipmentTotalRentalValue|number:'1.2-2'}}</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div *ngIf="enabler">
+                        <div class="alert alert-info">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            Please Wait Till Your Transaction Is Being Processed
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div id="loading-mask">
+                        </div>
+
+
+                    </div>
+                    <div style="padding-top: 15px;">
+
+                        <div>
+                            <button class="btn btn-success btn-md btn-tall btn-wide" [disabled]="disableCreate"
+                                (click)="openModal(content,'Create')">Create
+                                Fin07</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-danger btn-md btn-tall btn-wide" [disabled]="disableCreate"
+                                (click)="navToList()">Cancel/Exit</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+
+                    <!-- <button class="btn btn-warning btn-md btn-tall btn-wide" (click)="navToList()">Pdf</button> -->
+                </div>
+            </div>
+        </app-card>
+
+    </div>
+    <!-- </div> -->
+
+
+</div>

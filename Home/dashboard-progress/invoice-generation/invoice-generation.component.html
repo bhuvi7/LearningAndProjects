@@ -1,0 +1,443 @@
+<app-card cardTitle="Invoices Tracking As On {{selectedDate}}  For The Month Of {{this.prevMonth}} - {{this.year}}"
+    cardClass="prod-p-card" [options]="false">
+    <!-- <app-card cardTitle="FIN 02A Create" cardClass="card-datatable" [options]="false">
+        <form>
+        
+        </form>
+      </app-card> -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>State</label>
+                <select class="form-control form-control-primary" id="state" name="state" [value]="selectedStateId"
+                    [disabled]="disableState" (change)="handleForm($event)">
+                    <option *ngFor="let state of stateFilterDatas" value="{{state.id}}">{{state.stateName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <button class="btn btn-primary" style="margin-top: 25px; margin-left: 20px;" [disabled]="disableButton"
+                    (click)="go()">Go</button>
+            </div>
+
+        </div>
+        <!-- <div class="col-md-6">
+          <div class="form-group">
+            <label>District</label>
+            <select class="form-control form-control-primary" id="district" name="district" [value]="selectedDistrictId"
+              (change)="handleForm($event)">
+              <option value="0">ALL</option>
+              <option *ngFor="let district of districtFilterDatas" value="{{district.id}}">
+                {{district.districtName}}</option>
+            </select>
+          </div>
+        </div> -->
+    </div>
+    <ngb-tabset>
+        <ngb-tab title="FIN 01">
+            <ng-template ngbTabContent>
+
+                <div *ngIf="!showChart && !loading">
+
+                    <div class="col-md-4 float-left">
+
+                        <canvas baseChart *ngIf="fin01InvDisplay" (chartClick)="clickBarChart($event)"
+                            [datasets]="fin06barChartDatas" [labels]="barChartLabels" [options]="fin06barChartOptions"
+                            [legend]="barChartLegend" [chartType]="barChartType">
+                        </canvas>
+
+                    </div>
+
+                    <div class="col-md-4 float-left">
+
+                        <canvas baseChart *ngIf="fin01InvDisplay" (chartClick)="clickBarChart($event)"
+                            [datasets]="fin01barChartDatas" [labels]="barChartLabels" [options]="fin01barChartOptions"
+                            [legend]="barChartLegend" [chartType]="barChartType">
+                        </canvas>
+
+                    </div>
+
+                    <div class="col-md-4 float-left">
+
+                        <canvas baseChart *ngIf="fin01InvDisplay" (chartClick)="clickBarChart($event)"
+                            [datasets]="FIN01InvbarChartDatas" [labels]="barChartLabels"
+                            [options]="FIN01barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                        </canvas>
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-12 text-center" *ngIf="showChart"
+                    style="margin-bottom:20px;margin-top: 25px;font-weight: bold;">
+                    <h6 class="text-center">{{heading}} till {{this.currentDate}} - RM {{this.totalAmount | number}}
+                        {{(this.stateName!=""?" for "+this.stateName +" State ":"")}}
+                        {{(this.circleName!=""?" / "+this.circleName +" Circle ":"")}}
+                        {{(this.districtName!=""?" / "+this.districtName + " District":"")}}</h6>
+                </div>
+                <div class="col-md-8 float-left" *ngIf="showChart">
+                    <button type="button" class="btn btn-info float-left btn-sm" *ngIf="showChart"
+                        (click)="backButton()" style="margin-left: 250px;"><i
+                            class="fas fa-arrow-circle-left"></i></button>
+                    <canvas baseChart (chartClick)="clickFn($event)" [datasets]="pieChartData" [labels]="chartLabels"
+                        [chartType]="pieChartType" [options]="pieChartOptions"></canvas>
+                </div>
+
+                <div class="col-md-4 float-left" *ngIf="showChart">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr class="table-active">
+                                <th> </th>
+                                <th>Clinic </th>
+                                <th>Equipment </th>
+                                <th>Amount </th>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr *ngFor="let invGen of invoiceGenerationDisplay">
+                                <!-- <td> {{(invGen.districtName!=undefined?invGen.districtName :(invGen.circleName!=undefined?invGen.circleName :(invGen.stateName!=undefined?invGen.stateName :"")))}}</td> -->
+                                <td *ngIf="currentState=='state'">{{invGen.stateName}} </td>
+                                <td *ngIf="currentState=='circle'">{{invGen.circleName}} </td>
+                                <td *ngIf="currentState=='district'">{{invGen.districtName}} </td>
+                                <td>{{invGen.clinicCount}} </td>
+                                <td>{{invGen.equipmentCount}} </td>
+                                <td>{{invGen.amount}} </td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <th>{{totalClinic}}</th>
+                                <th>{{totalEquipment}}</th>
+                                <th>{{totalAmount}}</th>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div *ngIf="loading">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="FIN 02">
+            <ng-template ngbTabContent>
+
+                <div *ngIf="!showChart && !loading">
+                    <div class="row">
+                        <div class="col-md-4 float-left">
+
+                            <canvas baseChart *ngIf="fin02InvDisplay" (chartClick)="clickBarChart($event)"
+                                [datasets]="fin08bbarChartDatas" [labels]="barChartLabels"
+                                [options]="fin08bbarChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                            </canvas>
+
+                        </div>
+
+                        <div class="col-md-4 float-left">
+
+                            <canvas baseChart *ngIf="fin02InvDisplay" (chartClick)="clickBarChart($event)"
+                                [datasets]="fin08cbarChartDatas" [labels]="barChartLabels"
+                                [options]="fin08cbarChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                            </canvas>
+
+                        </div>
+
+                        <div class="col-md-4 float-left">
+
+                            <canvas baseChart *ngIf="fin02InvDisplay" (chartClick)="clickBarChart($event)"
+                                [datasets]="fin08barChartDatas" [labels]="barChartLabels"
+                                [options]="fin08barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                            </canvas>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 float-left">
+
+                            <canvas baseChart *ngIf="fin02InvDisplay" (chartClick)="clickBarChart($event)"
+                                [datasets]="fin03barChartDatas" [labels]="barChartLabels"
+                                [options]="fin03barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                            </canvas>
+
+                        </div>
+
+                        <div class="col-md-4 float-left">
+
+                            <canvas baseChart *ngIf="fin02InvDisplay" (chartClick)="clickBarChart($event)"
+                                [datasets]="FIN02InvbarChartDatas" [labels]="barChartLabels"
+                                [options]="FIN02barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                            </canvas>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 text-center" *ngIf="showChart"
+                    style="margin-bottom:20px;margin-top: 25px;font-weight: bold;">
+                    <h6 class="text-center">{{heading}} till {{this.currentDate}} - RM {{this.totalAmount | number}}
+                        {{(this.stateName!=""?" for "+this.stateName +" State ":"")}}
+                        {{(this.circleName!=""?" / "+this.circleName +" Circle ":"")}}
+                        {{(this.districtName!=""?" / "+this.districtName + " District":"")}}</h6>
+                </div>
+                <div class="col-md-8 float-left" *ngIf="showChart">
+                    <button type="button" class="btn btn-info float-left btn-sm" *ngIf="showChart"
+                        (click)="backButton()" style="margin-left: 250px;"><i
+                            class="fas fa-arrow-circle-left"></i></button>
+                    <canvas baseChart (chartClick)="clickFn($event)" [datasets]="pieChartData" [labels]="chartLabels"
+                        [chartType]="pieChartType" [options]="pieChartOptions"></canvas>
+                </div>
+
+                <div class="col-md-4 float-left" *ngIf="showChart">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr class="table-active">
+                                <th> </th>
+                                <th>Clinic </th>
+                                <th>Equipment </th>
+                                <th>Amount </th>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr *ngFor="let invGen of invoiceGenerationDisplay">
+                                <!-- <td> {{(invGen.districtName!=undefined?invGen.districtName :(invGen.circleName!=undefined?invGen.circleName :(invGen.stateName!=undefined?invGen.stateName :"")))}}</td> -->
+                                <td *ngIf="currentState=='state'">{{invGen.stateName}} </td>
+                                <td *ngIf="currentState=='circle'">{{invGen.circleName}} </td>
+                                <td *ngIf="currentState=='district'">{{invGen.districtName}} </td>
+                                <td>{{invGen.clinicCount}} </td>
+                                <td>{{invGen.equipmentCount}} </td>
+                                <td>{{invGen.amount| number}} </td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <th>{{totalClinic}}</th>
+                                <th>{{totalEquipment}}</th>
+                                <th>{{totalAmount| number}}</th>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div *ngIf="loading">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="FIN 02A">
+            <ng-template ngbTabContent>
+                <div *ngIf="!showChart && !loading">
+
+                    <div class="col-md-4 float-left">
+
+                        <canvas baseChart *ngIf="fin02aInvDisplay" (chartClick)="clickBarChart($event)"
+                            [datasets]="fin07barChartDatas" [labels]="barChartLabels" [options]="fin07barChartOptions"
+                            [legend]="barChartLegend" [chartType]="barChartType">
+                        </canvas>
+
+                    </div>
+
+                    <div class="col-md-4 float-left">
+
+                        <canvas baseChart *ngIf="fin02aInvDisplay" (chartClick)="clickBarChart($event)"
+                            [datasets]="fin03abarChartDatas" [labels]="barChartLabels" [options]="fin03abarChartOptions"
+                            [legend]="barChartLegend" [chartType]="barChartType">
+                        </canvas>
+
+                    </div>
+
+                    <div class="col-md-4 float-left">
+
+                        <canvas baseChart *ngIf="fin02aInvDisplay" (chartClick)="clickBarChart($event)"
+                            [datasets]="FIN02aInvbarChartDatas" [labels]="barChartLabels"
+                            [options]="FIN02abarChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                        </canvas>
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-12 text-center" *ngIf="showChart"
+                    style="margin-bottom:20px;margin-top: 25px;font-weight: bold;">
+                    <h6 class="text-center">{{heading}} till {{this.currentDate}} - RM {{this.totalAmount | number}}
+                        {{(this.stateName!=""?" for "+this.stateName +" State ":"")}}
+                        {{(this.circleName!=""?" / "+this.circleName +" Circle ":"")}}
+                        {{(this.districtName!=""?" / "+this.districtName + " District":"")}}</h6>
+                </div>
+                <div class="col-md-8 float-left" *ngIf="showChart">
+                    <button type="button" class="btn btn-info float-left btn-sm" *ngIf="showChart"
+                        (click)="backButton()" style="margin-left: 250px;"><i
+                            class="fas fa-arrow-circle-left"></i></button>
+                    <canvas baseChart (chartClick)="clickFn($event)" [datasets]="pieChartData" [labels]="chartLabels"
+                        [chartType]="pieChartType" [options]="pieChartOptions"></canvas>
+                </div>
+
+                <div class="col-md-4 float-left" *ngIf="showChart">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr class="table-active">
+                                <th> </th>
+                                <th>Clinic </th>
+                                <th>Equipment </th>
+                                <th>Amount </th>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr *ngFor="let invGen of invoiceGenerationDisplay">
+                                <!-- <td> {{(invGen.districtName!=undefined?invGen.districtName :(invGen.circleName!=undefined?invGen.circleName :(invGen.stateName!=undefined?invGen.stateName :"")))}}</td> -->
+                                <td *ngIf="currentState=='state'">{{invGen.stateName}} </td>
+                                <td *ngIf="currentState=='circle'">{{invGen.circleName}} </td>
+                                <td *ngIf="currentState=='district'">{{invGen.districtName}} </td>
+                                <td>{{invGen.clinicCount}} </td>
+                                <td>{{invGen.equipmentCount}} </td>
+                                <td>{{invGen.amount| number}} </td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <th>{{totalClinic}}</th>
+                                <th>{{totalEquipment}}</th>
+                                <th>{{totalAmount| number}}</th>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div *ngIf="loading">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="FIN 02B">
+            <ng-template ngbTabContent>
+                <div *ngIf="!showChart && !loading">
+
+
+
+                    <div class="col-md-4 float-left">
+
+                        <canvas baseChart *ngIf="fin02bInvDisplay" (chartClick)="clickBarChart($event)"
+                            [datasets]="FIN02bInvbarChartDatas" [labels]="barChartLabels"
+                            [options]="FIN02bbarChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+                        </canvas>
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-12 text-center" *ngIf="showChart"
+                    style="margin-bottom:20px;margin-top: 25px;font-weight: bold;">
+                    <h6 class="text-center">{{heading}} till {{this.currentDate}} - RM {{this.totalAmount | number}}
+                        {{(this.stateName!=""?" for "+this.stateName +" State ":"")}}
+                        {{(this.circleName!=""?" / "+this.circleName +" Circle ":"")}}
+                        {{(this.districtName!=""?" / "+this.districtName + " District":"")}}</h6>
+                </div>
+                <div class="col-md-8 float-left" *ngIf="showChart">
+                    <button type="button" class="btn btn-info float-left btn-sm" *ngIf="showChart"
+                        (click)="backButton()" style="margin-left: 250px;"><i
+                            class="fas fa-arrow-circle-left"></i></button>
+                    <canvas baseChart (chartClick)="clickFn($event)" [datasets]="pieChartData" [labels]="chartLabels"
+                        [chartType]="pieChartType" [options]="pieChartOptions"></canvas>
+                </div>
+
+                <div class="col-md-4 float-left" *ngIf="showChart">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr class="table-active">
+                                <th> </th>
+                                <th>Clinic </th>
+                                <th>Equipment </th>
+                                <th>Amount </th>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr *ngFor="let invGen of invoiceGenerationDisplay">
+                                <!-- <td> {{(invGen.districtName!=undefined?invGen.districtName :(invGen.circleName!=undefined?invGen.circleName :(invGen.stateName!=undefined?invGen.stateName :"")))}}</td> -->
+                                <td *ngIf="currentState=='state'">{{invGen.stateName}} </td>
+                                <td *ngIf="currentState=='circle'">{{invGen.circleName}} </td>
+                                <td *ngIf="currentState=='district'">{{invGen.districtName}} </td>
+                                <td>{{invGen.clinicCount}} </td>
+                                <td>{{invGen.equipmentCount}} </td>
+                                <td>{{invGen.amount}} </td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <th>{{totalClinic}}</th>
+                                <th>{{totalEquipment}}</th>
+                                <th>{{totalAmount}}</th>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div *ngIf="loading">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
+
+</app-card>

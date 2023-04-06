@@ -1,0 +1,208 @@
+<div class="row">
+  
+    <div class="col-md-12">
+      <app-card cardTitle="" cardClass="card-datatable" [options]="false">
+        <form>
+            <div class="row">
+             
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label> User Group Level</label>
+                  <select class="form-control form-control-primary" name="userGroupMasterList" [(ngModel)]="this.filteredGroupMasterId"  (change)="handleForm()">
+                    <option value="Y">Select</option>
+                    <option *ngFor="let group of userGroupMasters" [value]="group.id">{{group.name}}</option>
+    
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <!-- <label>District</label> -->
+                  <button  class="btn btn-primary" style="margin-top: 25px; margin-left: 20px;" (click)="resetFilter()">Reset</button>
+                </div>
+              </div>
+            </div>
+    
+    
+         
+          </form>
+    </app-card> 
+      <app-card cardTitle="User Group" cardClass="card-datatable" [options]="false">  
+        <button *ngIf="addFlag"  type="button" class="btn btn-primary float-right" style="margin-top: -50px;margin-right:10%;z-index: 50;" (click)="modalDefault.show();addUserGroup()"> Create Group</button>
+        <button  *ngIf="userGroupList.length>1" type="button" class="btn btn-primary float-right" style="margin-top: -50px;" (click)="modalReset.show();assignUserGroupPriority()"> Reset Priority</button>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr align="center">
+                <th>#</th>
+                <th>Group Level</th>
+                <th>Group Name</th>
+                <th>Priority</th>
+                <th>Active</th>
+                <th>No of Roles Assigned</th>
+                <th>Action</th>
+               
+              </tr>
+            </thead> 
+            <tbody *ngIf="loading">
+              <tr>
+                <td colspan="7">
+                  <div class="d-flex justify-content-center">
+                    <div class="spinner-grow text-primary" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-success" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-danger" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-dark" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="!loading">
+              <tr *ngFor="let group of userGroupList;let i = index" >
+                <td>{{i+1}}</td>
+                <td>{{group.userGroupMasterName}}</td>
+                <td>{{group.groupName}}</td>
+                <td>{{group.groupPriority}}</td>
+                <td>{{(group.isActive=='Y'?"Yes":"No")}}</td>
+                <td align="center"><button class="btn btn-primary"
+                  (click)="openRoles(group.userRoles);modalRole.show()"><b>{{group.userRoles.length}}</b></button></td>
+                <td align="center">
+                  <button type="button" class="btn btn-info btn-sm" (click)="modalDefault.show();editUserGroup(group)" ><i class="fas fa-edit"></i></button>&nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-danger btn-sm"  (click)="confirmAlert(group);" > <i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </app-card>
+    </div>
+  </div>
+  <app-ui-modal #modalDefault>
+    <div class="app-modal-header">
+      <h5 class="modal-title">User Group Detail</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+     <form>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Group Level</label>
+              <input type="text" class="form-control" placeholder="Group Level" disabled name="userGroupMasterName" [(ngModel)]="this.userGroup.userGroupMasterName"
+                >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Group Name</label>
+              <input type="text" class="form-control" placeholder="Group Name" name="userGroupName" [(ngModel)]="this.userGroup.groupName" >
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Active</label>
+              <select class="form-control form-control-primary" [(ngModel)]="this.userGroup.isActive" name="isActive">
+                <!-- <option value="Y">Yes</option>
+                <option value="N">No</option> -->
+                <option *ngFor="let active of actives"  value="{{active.value}}" [selected]="this.userGroup.isActive==active.value" >{{active.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Priority</label>
+              <select class="form-control form-control-primary" disabled [(ngModel)]="this.userGroup.groupPriority" name="groupPriority">
+                <option *ngFor="let priority of priorityList;"  value="{{priority.id}}" [selected]="this.userGroup.groupPriority==priority.id" >{{priority.id}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+     </form>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalDefault.hide();">Close</button>
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" (click)="modalDefault.hide();saveUserGroup();">Save</button>
+    </div>
+  </app-ui-modal>
+
+  <app-ui-modal #modalRole>
+    <div class="app-modal-header">
+      <h5 class="modal-title">User Role Details</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalRole.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr align="center">
+            <th>#</th>
+            <th>Role Name</th>
+            <th>Role Code</th>
+            <th>Active</th>
+            
+          </tr>
+        </thead> 
+        <tbody>
+          <tr *ngFor="let role of userRoles;let i = index" >
+            <td>{{i+1}}</td>
+            <td>{{role.roleName}}</td>
+            <td>{{role.roleCode}}</td>
+            <td>{{(role.isActive=='Y'?"Yes":"No")}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalRole.hide();">Close</button>
+    </div>
+  </app-ui-modal>
+
+  <app-ui-modal #modalReset >
+    <div class="app-modal-header">
+      <h5 class="modal-title">Priority User Group Edit</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalReset.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+     <div *ngFor="let group of priorityUserGroupList;let i = index">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Group Level</label>
+              <input type="text" class="form-control" placeholder="Group Level" disabled name="userGroupMasterName" [(ngModel)]="group.userGroupMasterName"
+                >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Group Name</label>
+              <input type="text" class="form-control" placeholder="Group Name" name="userGroupName" [(ngModel)]="group.groupName" >
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Priority</label>
+              <select class="form-control form-control-primary" [(ngModel)]="group.groupPriority" name="groupPriority">
+                <option *ngFor="let priority of priorityList;"  value="{{priority.id}}" [selected]="group.groupPriority==priority.id" >{{priority.id}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+     </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalReset.hide();">Close</button>
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" (click)="modalReset.hide();saveUserGroupPriority()">Save</button>
+    </div>
+  </app-ui-modal>

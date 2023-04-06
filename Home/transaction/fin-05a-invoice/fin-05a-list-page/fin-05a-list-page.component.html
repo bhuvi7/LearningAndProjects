@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-card cardTitle="FIN 05A - Reimbursement of Site Conformity" [options]="false" cardClass="tab-card">
+      <ngb-tabset>
+        <ngb-tab title="FIN 05A - Invoice">
+          <ng-template ngbTabContent>
+            <div class="row">
+              <div class="col-md-4">
+                <app-card cardTitle="FIN 05A - Create" [options]="false" cardClass="statustic-card"
+                  blockClass="text-center" [isCardFooter]="true" footerClass="bg-c-blue">
+
+
+                  <!-- <div class="row">
+                    <div class="col-md-6">
+                      <span class="d-block text-c-blue f-36">152</span>
+                      <p class="m-b-0">Current</p>
+                    </div>
+                    <div class="col-md-6">
+                      <span class="d-block text-c-red f-36">85</span>
+                      <p class="m-b-0">Older</p>
+                    </div>
+                  </div> -->
+                  <div class="progress">
+                    <div class="progress-bar bg-c-blue" style="width:100%"></div>
+                  </div>
+                  <div class="app-card-footer text-center">
+
+                    <a href="#" [routerLink]="['/transaction/fin-05a-invoice/fin-05a-create']"
+                      class="text-white text-center"><i class="fa fa-eye m-r-10"></i>View</a>
+                  </div>
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="FIN 05A - In progress" [options]="false" cardClass="statustic-card"
+                  blockClass="text-center" [isCardFooter]="true" footerClass="bg-c-yellow">
+
+                  <!-- <div class="row">
+                    <div class="col-md-6">
+                      <span class="d-block text-c-blue f-36">152</span>
+                      <p class="m-b-0">Current</p>
+                    </div>
+                    <div class="col-md-6">
+                      <span class="d-block text-c-red f-36">85</span>
+                      <p class="m-b-0">Older</p>
+                    </div>
+                  </div> -->
+
+                  <div class="progress">
+                    <div class="progress-bar bg-c-yellow" style="width:100%"></div>
+                  </div>
+                  <div class="app-card-footer text-center">
+                    <a href="#!" [routerLink]="['/transaction/fin-05a-invoice/fin-05a-inprogress-list']"
+                      class="text-white text-center"><i class="fa fa-eye m-r-10"></i>View</a>
+                  </div>
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="FIN 05A - Approved" [options]="false" cardClass="statustic-card"
+                  blockClass="text-center" [isCardFooter]="true" footerClass="bg-c-green">
+
+                  <!-- <div class="row">
+
+                    <div class="col-md-6">
+                      <span class="d-block text-c-blue f-36">152</span>
+                      <p class="m-b-0">Current</p>
+                    </div>
+                    <div class="col-md-6">
+                      <span class="d-block text-c-red f-36">85</span>
+                      <p class="m-b-0">Older</p>
+                    </div>
+                  </div> -->
+
+                  <div class="progress">
+                    <div class="progress-bar bg-c-green" style="width:100%"></div>
+                  </div>
+                  <div class="app-card-footer text-center">
+                    <a href="#!" [routerLink]="['/transaction/fin-05a-invoice/fin-05a-approved-list']"
+                      class="text-white text-center"><i class="fa fa-eye m-r-10"></i>View</a>
+                  </div>
+                </app-card>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+
+
+      </ngb-tabset>
+    </app-card>
+  </div>
+
+
+</div>

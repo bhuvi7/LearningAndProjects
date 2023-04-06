@@ -1,0 +1,226 @@
+<div class="row">
+    <div class="col-lg-12">
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header"> </div>
+            <div class="modal-body">
+                <b>Do You Want To {{modalBodyContent}}?</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal()">Yes</button>
+                <button type="button" class="btn btn-danger btn-md btn-tall btn-wide" (click)="c()">No</button>
+            </div>
+        </ng-template>
+        <app-card cardTitle="FIN 09 Create" [options]="false">
+            <div class="form-row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>State</label>
+                        <select class="form-control form-control-primary" id="state" name="state" [value]="state"
+                            (change)="handleForm($event)">
+                            <option value=0>Select</option>
+                            <option *ngFor="let state of states" value={{state.id}}>
+                                {{state.stateName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>District</label>
+                        <select class="form-control form-control-primary" id="district" name="district"
+                            [value]="district" (change)="handleForm($event)">
+                            <option value=0>Select</option>
+                            <option *ngFor="let district of districts" value={{district.id}}>
+                                {{district.districtName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Clinic Type</label>
+                        <select class="form-control form-control-primary" id="clinicType" name="clinicType"
+                            [value]="clinicType" (change)="handleForm($event)">
+                            <option value=0>Select</option>
+                            <option *ngFor="let clinicType of clinicTypes" value={{clinicType.id}}>
+                                {{clinicType.clinicTypeCode}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group" name="dateForm">
+                        <label>Penalty Approval Date</label>
+                        <input type="date" class="form-control" id="approvalDate" name="approvalDate"
+                            [(ngModel)]="fin09sd.approvalDate" [max]="this.curDate" onkeydown="return false"
+                            (click)="curDatePicker()" (change)="datePicker()" />
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div class="form-row"> -->
+            <!-- <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Clinic</label>
+                        <select class="form-control form-control-primary" id="clinic" name="clinic" [value]="clinic"
+                            (change)="handleForm($event)">
+                            <option value=0>Select</option>
+                            <option *ngFor="let clinic of clinics" value={{clinic.id}} >
+                                {{clinic.clinicName}}</option>
+                        </select>
+                    </div>
+                </div> -->
+            <!-- <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Clinic</label>
+                        <ng-select [ngClass]="'ng-select'" [options]="simpleOption" [(ngModel)]="selectedOptionClinic">
+                        </ng-select>
+                    </div>
+                </div>
+            </div> -->
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label> Response Time Penalty(FIN 09-A) </label>
+                    <input type="number" class="form-control" id="responseTimePenalty" name="responseTimePenalty"
+                        [(ngModel)]="fin09sd.responseTimePenalty" (keydown.arrowup)="false" (keydown.arrowdown)="false">
+                </div>
+                <div class="form-group col-md-3">
+                    <label> Repair Time Penalty(FIN 09-B) </label>
+                    <input type="number" class="form-control" id="repairTimePenalty" name="repairTimePenalty"
+                        [(ngModel)]="fin09sd.repairTimePenalty" (keydown.arrowup)="false" (keydown.arrowdown)="false">
+                </div>
+                <div class="form-group col-md-3">
+                    <label> UpTime Penalty(FIN 09-C) </label>
+                    <input type="number" class="form-control" id="uptimePenalty" name="uptimePenalty"
+                        [(ngModel)]="fin09sd.uptimePenalty" (keydown.arrowup)="false" (keydown.arrowdown)="false">
+                </div>
+                <div class="form-group col-md-3">
+                    <label> Scheduled Maintenance Penalty(FIN 09-D) </label>
+                    <input type="number" class="form-control" id="scheduledMaintenancePenalty"
+                        name="scheduledMaintenancePenalty" [(ngModel)]="fin09sd.scheduledMaintenancePenalty" (keydown.arrowup)="false" (keydown.arrowdown)="false">
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="form-group col-md-3">
+                    <label> Late Delivery Penalty(FIN 09-E) </label>
+                    <input type="number" class="form-control" id="lateDeliveryPenalty" name="lateDeliveryPenalty"
+                        [(ngModel)]="fin09sd.lateDeliveryPenalty" (keydown.arrowup)="false" (keydown.arrowdown)="false">
+                </div>
+
+
+                <!-- <div class="form-group col-md-3">
+                    <label>Quater</label>
+                    <select class="form-control form-control-primary" id="Quater" name="Quater" disabled
+                    [(ngModel)]="fin09sd.approvalQuater" [value]=this.quater (change)="handleForm($event)" >
+                    <option value="Q1">Q1</option>
+                    <option value="Q2">Q2</option>
+                    <option value="Q3">Q3</option>
+                    <option value="Q4">Q4</option> -->
+                <!-- <option value=0>Select</option>
+                        
+                        <option *ngFor="let approvedQuater of approvedQuaters" value={{approvedQuater.Q}}>
+                            {{approvedQuater.Q}}</option> -->
+                <!-- </select>
+
+                </div> -->
+                <div class="form-group col-md-3">
+                    <label>Year</label>
+                    <select class="form-control form-control-primary" id="Year" name="Year"
+                        [(ngModel)]="fin09sd.approvalYear" [value]=this.year (change)="handleForm($event)">
+
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Month</label>
+                    <select class="form-control form-control-primary" id="Month" name="Month"
+                        [(ngModel)]="fin09sd.approvalMonth" [value]=this.month (change)="handleForm($event)">
+
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label> Remarks </label>
+                    <input type="text" class="form-control" id="Fin09 Ref No" name="Fin09 Ref No"
+                        [(ngModel)]="fin09sd.remarks">
+                </div>
+
+            </div>
+            <div class="form-row">
+                <button class="btn btn-success btn-md" (click)="addInFin09()" [disabled]="disableCreateButton"> Create
+                </button>
+            </div>
+        </app-card>
+        <app-card [options]="false">
+            <div *ngIf="enableFin09">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <!-- <th>CLINIC NAME</th>
+                                    <th>CLINIC CODE</th> -->
+                                    <th>RESPONSE TIME PENALTY</th>
+                                    <th>REPAIR TIME PENALTY</th>
+                                    <th>UPTIME PENALTY</th>
+                                    <th>SCHEDULED MAINTENANCE PENALTY</th>
+                                    <th>LATE DELIVERY PENALTY</th>
+                                    <th>TOTAL PENALTY</th>
+                                    <th>PENALTY DATE</th>
+                                    <th>Month</th>
+                                    <th>Year</th>
+                                    <!-- <th>TOTAL PENALTY</th> -->
+                                    <!-- <th>ACTION</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of fin09;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <!-- <td>{{data.clinicName}}</td>
+                                    <td>{{data.clinicCode}}</td> -->
+                                    <td style="text-align: right;">{{data.responseTimePenalty|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;">{{data.repairTimePenalty|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;">{{data.uptimePenalty|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;">{{data.scheduledMaintenancePenalty|number:'1.2-2'}}
+                                    </td>
+                                    <td style="text-align: right;">{{data.lateDeliveryPenalty|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;">{{data.totalPenalty|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;">{{data.approvalDate|date:'dd-MM-yyyy'}}</td>
+                                    <td style="text-align: right;">{{data.approvalMonth}}</td>
+                                    <td style="text-align: right;">{{data.approvalYear}}</td>
+                                    <!-- <td style="text-align: right;">{{data.totalPenalty}}</td> -->
+                                    <!-- <td>
+                                        <button class="btn btn-success btn-md btn-tall btn-wide"
+                                            (click)="removeFin09SD(i)">Delete</button>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <button class="btn btn-success btn-md" [disabled]="disableCreate"
+                            (click)="openModal(content,'Create')"> Create FIN09
+                        </button> &nbsp;&nbsp;
+                        <button class="btn btn-success btn-md btn-tall btn-danger" [disabled]="disableCreate"
+                            (click)="navToList()">Back</button>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+</div>

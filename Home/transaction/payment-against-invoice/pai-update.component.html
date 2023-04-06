@@ -1,0 +1,148 @@
+<div class="row">
+  <div class="col-lg-12">
+    <app-card cardTitle="Bank Receipting   :   {{invoice.invoiceNo}}" cardClass="card-datatable" [options]="false">
+      <div>
+        <div *ngIf="loading">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!loading">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>State</label>
+                <input type="text" class="form-control" [value]="invoice.stateName" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>District</label>
+                <input type="text" class="form-control" [value]="invoice.districtName" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Invoice Type</label>
+                <input type="text" class="form-control" [value]="invoice.invoiceTypeName" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Invoice Date</label>
+                <input type="text" class="form-control" [value]="invoice.invoiceDateDisplay" readonly />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Invoice Base Value</label>
+                <input type="text" class="form-control" [value]="invoice.invoiceBaseValue|number:'1.2-2'" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>SST Amount</label>
+                <input type="text" class="form-control" [value]="invoice.sst|number:'1.2-2'" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Total Invoice Value</label>
+                <input type="text" class="form-control" [value]="invoice.totalInvoiceValue|number:'1.2-2'" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Retention Amount</label>
+                <input type="text" class="form-control" [value]="invoice.retentionAmount|number:'1.2-2'" readonly />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Outstanding Amount</label>
+                <input type="text" class="form-control" [value]="invoice.outstandingAmount|number:'1.2-2'" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Collection Received</label>
+                <input type="Text" class="form-control" [value]="invoice.paymentReceived|number:'1.2-2'" readonly />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Debit Note Amount</label>
+                <input type="Text" class="form-control" [value]="invoice.debitNoteEntry|number:'1.2-2'" readonly />
+              </div>
+            </div>
+            <!-- <div class="col-md-3">
+              <div class="form-group">
+                <label>Amount To Pay</label>
+                <input type="Text" class="form-control" [value]="this.invoice.totalInvoiceValueWoRetention|number"
+                  readonly />
+              </div>
+            </div> -->
+            <!-- <div class="col-md-3">
+              <div class="form-group">
+                <label>Collection Received Ref No</label>
+                <input type="Text" class="form-control" [value]="invoice.paymentRefNo" readonly>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Collection Received date</label>
+                <input type="text" class="form-control" [value]="invoice.paymentDate" readonly>
+              </div>
+            </div> -->
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Collection Receiving Now</label>
+                <input type="number" class="form-control" id="paymentReceived" name="paymentReceived"
+                  placeholder="Enter Payment Amount" [(ngModel)]="invoicePayment.paymentReceived" />
+              </div>
+
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Bank Ref No</label>
+                <input type="Text" class="form-control" id="paymentReceivedRefNo" name="paymentReceivedRefNo"
+                  placeholder="Enter Payment ref no" [(ngModel)]="invoicePayment.paymentRefNo" />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Collection Receiving Date</label>
+                <input type="date" class="form-control" id="paymentReceivedDate" name="paymentReceivedDate"
+                  [min]="invoice.invoiceDate" [max]="today" [(ngModel)]="invoicePayment.paymentDate" />
+              </div>
+            </div>
+          </div>
+          <div style="padding-top: 15px;">
+            <!-- <button class="btn btn-info btn-md btn-tall btn-wide" (click)="updateAsDraft()">Update</button>
+            &nbsp;&nbsp;&nbsp;&nbsp; -->
+            <button class="btn btn-success btn-md" [disabled]="disableSubmit" (click)="save()">Submit</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-danger btn-md btn-tall btn-wide" (click)='action()'>Back</button>
+          </div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>

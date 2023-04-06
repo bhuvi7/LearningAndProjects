@@ -1,0 +1,37 @@
+table {
+    width: 100%;
+    border: 2px solid black;
+    padding: 6px;
+  }
+
+th {
+ // background-color: grey;
+  border: 2px solid black;
+  text-align: center;
+  padding: 6px;
+}
+
+td {
+  border: 2px solid black;
+  text-align: center;
+  padding: 6px;
+}
+.ng-select.custom {
+  border:0px;
+  min-height: 0px;
+  border-radius: 0;
+}
+.ng-select.custom .ng-select-container  {            
+  min-height: 0px;
+  border-radius: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

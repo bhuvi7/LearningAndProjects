@@ -1,0 +1,244 @@
+<div class="row">
+    <div class="col-lg-12">
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <!-- <h4 class="modal-title" id="modal-basic-title">Hi there!</h4> -->
+                <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button> -->
+            </div>
+            <div class="modal-body">
+                <b>Do You Want To {{modalBodyContent}}?</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md btn-tall btn-wide"
+                    (click)="c();closeModal()">Yes</button>
+                <button type="button" class="btn btn-danger btn-md btn-tall btn-wide" (click)="c()">No</button>
+            </div>
+        </ng-template>
+        <app-card cardClass="card-datatable" [options]="false">
+            <div>
+                <div *ngIf="loading">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-dark" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!loading">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table>
+                                <tr>
+                                    <td><b> SUMMARY OF MAINTENANCE CHARGES </b></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <b> INVOICE TO:</b>
+                            <table style="width: 100%;
+                    border: 2px solid black;
+                    padding: 6px;">
+                                <tr>
+                                    <td style="text-align: left;border-right: white;border-bottom: white;">
+                                        <b>PKD/PPD </b>
+                                    </td>
+                                    <td style="border-left: white;border-right: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td style="text-align: left;border-left: white;border-bottom: white;">
+                                        {{clinicTypeCode}}-{{districtName}}
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>ADDRESS </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: start;border-left: white;border-top: white;border-bottom: white;">
+                                        {{clinicAddress}}
+                                    </td>
+                                </tr> -->
+                                <tr>
+                                    <td
+                                        style="text-align: left;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>ADDRESS </b>
+                                    </td>
+                                    <td
+                                        style="border-left: white;border-right: white;border-top: white;border-bottom: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td
+                                        style="text-align: start;border-left: white;border-top: white;border-bottom: white;">
+                                        {{districtAddress}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;border-right: white;border-top: white;">
+                                        <b>MONTH/YEAR </b>
+                                    </td>
+                                    <td style="border-left: white;border-right: white;border-top: white;">
+                                        <b>:</b>
+                                    </td>
+                                    <td style="text-align: left;border-left: white;border-top: white;">
+                                        {{monthYear}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-3">
+                            <br>
+                        </div>
+                        <div class="col-lg-3">
+                            <b>FORM FIN 03</b>
+                            <table style="width: 100%;
+                    border: 2px solid black;
+                    padding: 6px;">
+                                <tr>
+                                    <td style="text-align: left;"><b>DOC REF:</b></td>
+                                    <td style="text-align: right;"><b>{{docRef}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;"><b>DATE:</b></td>
+                                    <td style="text-align: right;"><b>{{date}}</b></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table>
+                                <tr style="text-align: center;">
+                                    <th rowspan="5" colspan="1" style="text-align: center;">CLINIC NAME</th>
+                                    <th rowspan="5" colspan="1" style="text-align: center;">CLINIC CODE</th>
+                                    <th rowspan="1" colspan="7"> MAINTENANCE CHARGES</th>
+                                    <th rowspan="3" colspan="1" style="text-align: center;">NET CHARGES PAYABLE</th>
+                                </tr>
+                                <tr>
+
+                                    <th colspan="5"> FORM FIN 08 </th>
+                                    <th> FORM FIN 09 </th>
+                                    <th></th>
+
+
+                                </tr>
+                                <tr>
+
+                                    <th colspan="2">NEW BE</th>
+                                    <th colspan="2"> PURCHASED BE </th>
+                                    <th>TOTAL MAINTENANCE CHARGES</th>
+                                    <th>PENALTY</th>
+                                    <th>NET MAINTENANCE CHARGES</th>
+
+                                </tr>
+                                <tr>
+
+                                    <th>No.of.Units</th>
+                                    <th>RM</th>
+                                    <th>No.of.Units</th>
+                                    <th>RM</th>
+                                    <th>RM</th>
+                                    <th>RM</th>
+                                    <th>RM</th>
+                                    <th>RM</th>
+                                </tr>
+                                <tr>
+
+                                    <th></th>
+                                    <th>(B)</th>
+                                    <th></th>
+                                    <th>(C)</th>
+                                    <th>(D)=(B)+(C)</th>
+                                    <th>(E)</th>
+                                    <th>(F)=(D)-(E)</th>
+                                    <th>(G)=(F)</th>
+                                </tr>
+                                <tr *ngFor="let data of clinicDatas">
+                                    <td style="text-align: left;">{{data.clinicName}}</td>
+                                    <td>{{data.clinicCode}}</td>
+                                    <td> {{data.fin08bEquipmentCount}} </td>
+                                    <td style="text-align: right;"> {{data.fin08bMaintenanceCharge|number:'1.2-2'}}
+                                    </td>
+                                    <td> {{data.fin08cEquipmentCount}} </td>
+                                    <td style="text-align: right;"> {{data.fin08cMaintenanceCharge|number:'1.2-2'}}
+                                    </td>
+                                    <td style="text-align: right;"> {{data.fin08MaintenanceCharge|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;"> {{data.fin09PenaltyCharge|number:'1.2-2'}} </td>
+                                    <td style="text-align: right;"> {{data.netMaintenanceCharge|number:'1.2-2'}} </td>
+                                    <td style="text-align: right;"> {{data.netMaintenanceCharge|number:'1.2-2'}}</td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td colspan="2"> TOTAL</td>
+                                    <td></td>
+                                    <td style="text-align: right;">{{newBeTotal|number:'1.2-2'}}</td>
+                                    <td></td>
+                                    <td style="text-align: right;">{{purchasedBeTotal|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;">{{totalMaintenanceCharge|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;">0.00</td>
+                                    <td style="text-align: right;">{{netMaintenanceCharge|number:'1.2-2'}}</td>
+                                    <td style="text-align: right;">{{netMaintenanceCharge|number:'1.2-2'}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div *ngIf="enabler">
+                        <div class="alert alert-info">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            Please Wait Till Your Transaction Is Being Processed
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div id="loading-mask">
+                        </div>
+
+
+                    </div>
+                    <div style="padding-top: 15px;">
+                        <button class="btn btn-success btn-md btn-tall btn-wide" [disabled]="disableCreate"
+                            (click)="openModal(content,'Create')">Create
+                            Fin03</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-danger btn-md btn-tall btn-wide" [disabled]="disableCreate"
+                            (click)="navToList()">Cancel/Exit</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <!-- <button class="btn btn-warning btn-md btn-tall btn-wide" (click)="navToList()">Pdf</button> -->
+                    </div>
+                </div>
+            </div>
+        </app-card>
+
+    </div>
+</div>

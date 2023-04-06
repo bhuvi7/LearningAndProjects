@@ -1,0 +1,1448 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-card cardTitle="FIN 02 - New and Purchased BME Maintenance Charge" [options]="false" cardClass="tab-card">
+      <!-- <h5 class="mb-3">Basic Tabs</h5> -->
+      <ngb-tabset>
+        <ngb-tab title="Fin 08b - Doc">
+          <ng-template ngbTabContent>
+            <div class="row">
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 08b - Initiate" [options]="false" blockClass="text-center">
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+
+                          <div class="row" *ngIf="!loading">
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd1NotCreated  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal1 | number }}</span>
+                            </div>
+
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd1NotCrEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount1 | number }}</span>
+                            </div>
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08b-create-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-info  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd1NotCreated | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal1 | number }}</span>
+                            </div> -->
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd1NotCrEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount1 | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08b-create-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-info  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 08b - In progress" [options]="false" blockClass="text-center">
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+                          <div class="row" *ngIf="!loading">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd1InProgress  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal1 | number }}</span>
+                            </div>
+
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd1ProgEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount1 | number }}</span>
+                            </div>
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08b-inprogress-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-warning  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd1InProgress | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal1 | number }}</span>
+                            </div> -->
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd1ProgEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount1 | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08b-inprogress-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-warning  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 08b - Approved" [options]="false" blockClass="text-center">
+
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+                          <div class="row" *ngIf="!loading">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd1Approved  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal1 | number }}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd1ApprEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount1 | number }}</span>
+                            </div>
+
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08b-approved-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-success  btn-tall "><b><b>View</b></b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd1Approved | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal1 | number }}</span>
+                            </div> -->
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd1ApprEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount1 | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08b-approved-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-success  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Fin 08c - Doc">
+          <ng-template ngbTabContent>
+            <div class="row">
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 08c- Initiate" [options]="false" blockClass="text-center">
+
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+
+                          <div class="row" *ngIf="!loading">
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd2NotCreated  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal2 | number }}</span>
+                            </div>
+
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd2NotCrEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount2 | number }}</span>
+                            </div>
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08c-create-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-info  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd2NotCreated | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal2 | number }}</span>
+                            </div> -->
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd2NotCrEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount2 | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08c-create-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-info  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 08c - In Progress" [options]="false" blockClass="text-center">
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+                          <div class="row" *ngIf="!loading">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd2InProgress  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal2 | number }}</span>
+                            </div>
+
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd2ProgEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount2 | number }}</span>
+                            </div>
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08c-inprogress-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-warning  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd2InProgress | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal2 | number }}</span>
+                            </div> -->
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd2ProgEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount2 | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08c-inprogress-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-warning  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+
+
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 08c - Approved" [options]="false" blockClass="text-center">
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+                          <div class="row" *ngIf="!loading">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd2Approved  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal2 | number }}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd2ApprEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount2 | number }}</span>
+                            </div>
+
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08c-approved-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-success  btn-tall "><b><b>View</b></b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd2Approved | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal2 | number }}</span>
+                            </div> -->
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd2ApprEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount2 | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08/fin-08c-approved-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-success  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+
+                </app-card>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Fin 08 - Doc">
+          <ng-template ngbTabContent>
+            <div class="row">
+
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 08- Initiate" [options]="false" blockClass="text-center">
+
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+
+                          <div class="row" *ngIf="!loading">
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd3NotCreated  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal | number }}</span>
+                            </div>
+
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd3NotCrEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount | number }}</span>
+                            </div>
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08-create-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-info  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd3NotCreated | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal | number }}</span>
+                            </div> -->
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd3NotCrEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08-create-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-info  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 08 - In Progress" [options]="false" blockClass="text-center">
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+                          <div class="row" *ngIf="!loading">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd3InProgress  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal | number }}</span>
+                            </div>
+
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd3ProgEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount | number }}</span>
+                            </div>
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08-inprogress-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-warning  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd3InProgress | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal | number }}</span>
+                            </div> -->
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd3ProgEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08-inprogress-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-warning  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 08 - Approved" [options]="false" blockClass="text-center">
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+                          <div class="row" *ngIf="!loading">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd3Approved  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal | number }}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd3ApprEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount | number }}</span>
+                            </div>
+
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08-approved-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-success  btn-tall "><b><b>View</b></b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd3Approved | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal | number }}</span>
+                            </div> -->
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd3ApprEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-08-approved-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-success  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Fin 03 - Doc">
+          <ng-template ngbTabContent>
+            <div class="row">
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 03- Initiate" [options]="false" blockClass="text-center">
+
+
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+
+                          <div class="row" *ngIf="!loading">
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd4NotCreated  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal | number }}</span>
+                            </div>
+
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd4NotCrEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount | number }}</span>
+                            </div>
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-03-create-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-info  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd4NotCreated | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal | number }}</span>
+                            </div> -->
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd4NotCrEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-03-create-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-info  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 03 - In progress" [options]="false" blockClass="text-center">
+
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+                          <div class="row" *ngIf="!loading">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd4InProgress  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal | number }}</span>
+                            </div>
+
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd4ProgEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount | number }}</span>
+                            </div>
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-03-inprogress-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-warning  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd4InProgress | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal | number }}</span>
+                            </div> -->
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd4ProgEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-03-inprogress-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-warning  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="Fin 03 - Approved" [options]="false" blockClass="text-center">
+
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+                          <div class="row" *ngIf="!loading">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonSd4Approved  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal | number }}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonSd4ApprEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount | number }}</span>
+                            </div>
+
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-03-approved-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-success  btn-tall "><b><b>View</b></b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonSd4Approved | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal | number }}</span>
+                            </div> -->
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonSd4ApprEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-03-approved-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-success  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="FIN 02 - Invoice ">
+          <ng-template ngbTabContent>
+            <div class="row">
+              <div class="col-md-4">
+                <app-card cardTitle="FIN 02- Initiate" [options]="false" blockClass="text-center">
+
+
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+
+                          <div class="row" *ngIf="!loading">
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonInvNotCreated  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal | number }}</span>
+                            </div>
+
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonInvNotCrEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount | number }}</span>
+                            </div>
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-02-create-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-info  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonInvNotCreated | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal | number }}</span>
+                            </div> -->
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Initiate (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonInvNotCrEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-02-create-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-info  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="FIN 02 - In progress" [options]="false" blockClass="text-center">
+
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+                          <div class="row" *ngIf="!loading">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonInvInProgress  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal | number }}</span>
+                            </div>
+
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonInvProgEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount | number }}</span>
+                            </div>
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-02-inprogress-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-warning  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonInvInProgress | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal | number }}</span>
+                            </div> -->
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">To Process (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonInvProgEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-02-inprogress-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-warning  btn-tall "><b>View</b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+              <div class="col-md-4">
+                <app-card cardTitle="FIN 02 - Approved" [options]="false" blockClass="text-center">
+
+                  <ngb-tabset type="pills">
+                    <ngb-tab title="Current">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Current</legend>
+                          <div class="row" *ngIf="!loading">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Clinics)</p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonInvApproved  | number}}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-blue f-36">{{ fin02InvoiceCounter.currMonTotal | number }}</span>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Equipments)</p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonInvApprEquipCount | number }}</span>
+                            </div>
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-blue f-36" style="color:#092E20">{{ fin02InvoiceCounter.currMonEquipCount | number }}</span>
+                            </div>
+
+                          </div>
+                          <div  *ngIf="loading">
+                            <div class="d-flex justify-content-center">
+                              <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                              <div class="spinner-grow text-dark" role="status">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                            </div>
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-02-approved-list/new']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-success  btn-tall "><b><b>View</b></b></button></a>
+                        </fieldset>
+                      </ng-template>
+                    </ngb-tab>
+
+                    <ngb-tab title="Older" [disabled]="false">
+                      <ng-template ngbTabContent>
+                        <fieldset class="border border-dark p-3">
+                          <legend class="w-auto p-3 ">Older</legend>
+
+                          <div class="row">
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Clinics)</p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonInvApproved | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Clinics </p>
+                              <span
+                                class="d-block text-c-red f-36">{{ fin02InvoiceCounter.oldMonTotal | number }}</span>
+                            </div> -->
+                            <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Processed (Equipments)</p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonInvApprEquipCount | number }}</span>
+                            </div>
+                            <!-- <div class="col-md-12 p-0 mt-2">
+                              <p class="m-b-0">Total Equipments </p>
+                              <span
+                                class="d-block text-c-red f-36" style="color:#9400D3">{{ fin02InvoiceCounter.oldMonEquipCount | number }}</span>
+                            </div> -->
+                          </div>
+                          <a href="#" [routerLink]="['/transaction/fin-02-invoice/fin-02-approved-list/older']"
+                            class="text-white text-center"> <button type="button"
+                              class="col-md-12 btn btn-success  btn-tall "><b><b>View</b></b></button></a>
+                        </fieldset>
+
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </app-card>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+
+      </ngb-tabset>
+    </app-card>
+  </div>
+
+
+</div>

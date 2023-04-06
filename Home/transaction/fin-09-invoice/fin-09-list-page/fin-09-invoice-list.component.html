@@ -1,0 +1,174 @@
+<div class="row">
+    <div class="col-md-12">
+        <app-card cardTitle="FIN 09 - Penalty Charges" [options]="false" cardClass="tab-card">
+            <!-- <h5 class="mb-3">Basic Tabs</h5> -->
+            <ngb-tabset>
+                <ngb-tab title="FIN 09 - Invoice">
+                    <ng-template ngbTabContent>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <app-card cardTitle="FIN 09 - Create" [options]="false" cardClass="statustic-card"
+                                    blockClass="text-center" [isCardFooter]="true" footerClass="bg-c-blue">
+
+                                    <!-- <p class="m-b-0">Create Fin 06 Supporting Document</p> -->
+
+                                    <!-- <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="d-block text-c-blue f-36">152</span>
+                                            <p class="m-b-0">Current</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="d-block text-c-red f-36">85</span>
+                                            <p class="m-b-0">Older</p>
+                                        </div>
+                                    </div> -->
+                                    <div class="progress">
+                                        <div class="progress-bar bg-c-blue" style="width:100%"></div>
+                                    </div>
+                                    <div class="app-card-footer text-center">
+
+                                        <a href="#" [routerLink]="['/transaction/fin-09-invoice/fin-09-create']"
+                                            class="text-white text-center"><i class="fa fa-eye m-r-10"></i>View</a>
+                                    </div>
+                                </app-card>
+                            </div>
+
+                            <div class="col-md-4">
+                                <app-card cardTitle="FIN 09 - Created List" [options]="false" cardClass="statustic-card"
+                                    blockClass="text-center" [isCardFooter]="true" footerClass="bg-c-yellow">
+
+                                    <!-- <p class="m-b-0">Create Fin 06 Supporting Document</p> -->
+
+                                    <!-- <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="d-block text-c-blue f-36">152</span>
+                                            <p class="m-b-0">Current</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="d-block text-c-red f-36">85</span>
+                                            <p class="m-b-0">Older</p>
+                                        </div>
+                                    </div> -->
+                                    <div class="progress">
+                                        <div class="progress-bar bg-c-yellow" style="width:100%"></div>
+                                    </div>
+                                    <div class="app-card-footer text-center">
+
+                                        <a href="#" [routerLink]="['/transaction/fin-09-invoice/fin-09-view']"
+                                            class="text-white text-center"><i class="fa fa-eye m-r-10"></i>View</a>
+                                    </div>
+                                </app-card>
+                            </div>
+
+
+                        </div>  
+
+                        <!-- mine -->
+                        
+
+
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+
+            
+
+
+        </app-card>
+    </div>
+
+
+</div>
+
+
+<!-- <div class="row">
+
+
+    <div class="col-md-4">
+        <app-card cardTitle="Fin 10b Create" [options]="false" cardClass="statustic-card" blockClass="text-center"
+            [isCardFooter]="true" footerClass="bg-c-blue">
+
+            <p class="m-b-0">Create Fin 10b</p>
+            <div class="progress">
+                <div class="progress-bar bg-c-blue" style="width:100%"></div>
+            </div>
+            <div class="app-card-footer text-center">
+                <a href="#" [routerLink]="['/transaction/fin-04-invoice/fin-10b-create-list']"
+                    class="text-white text-center"><i class="fa fa-eye m-r-10"></i>View</a>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-md-4">
+        <app-card cardTitle="Fin 10b" [options]="false" cardClass="statustic-card" blockClass="text-center"
+            [isCardFooter]="true" footerClass="bg-c-blue">
+
+            <p class="m-b-0"> List of Created Fin 10b</p>
+            <div class="progress">
+                <div class="progress-bar bg-c-blue" style="width:100%"></div>
+            </div>
+            <div class="app-card-footer text-center">
+                <a href="#!" [routerLink]="['/transaction/fin-04-invoice/fin-10b-list']"
+                    class="text-white text-center"><i class="fa fa-eye m-r-10"></i>View</a>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-md-4">
+        <app-card cardTitle="Fin 06 Not Approved" [options]="false" cardClass="statustic-card" blockClass="text-center"
+            [isCardFooter]="true" footerClass="bg-c-red">
+
+            <p class="m-b-0">List of Fin 06 Not Approved</p>
+            <div class="progress">
+                <div class="progress-bar bg-c-red" style="width:100%"></div>
+            </div>
+            <div class="app-card-footer text-center">
+                <a href="#!" [routerLink]="['/transaction/fin-01-invoice/fin-06-na']" class="text-white text-center"><i
+                        class="fa fa-eye m-r-10"></i>View</a>
+            </div>
+        </app-card>
+    </div>
+
+    <div class="col-md-4">
+        <app-card cardTitle="Fin 04 Create - Invoice" [options]="false" cardClass="statustic-card"
+            blockClass="text-center" [isCardFooter]="true" footerClass="bg-c-green">
+
+            <p class="m-b-0"> Create Fin 04 Invoice</p>
+            <div class="progress">
+                <div class="progress-bar bg-c-green" style="width:100%"></div>
+            </div>
+            <div class="app-card-footer text-center">
+                <a href="#!" [routerLink]="['/transaction/fin-04-invoice/fin-04-create-list']"
+                    class="text-white text-center"><i class="fa fa-eye m-r-10"></i>View</a>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-md-4">
+        <app-card cardTitle="Fin 04 - Invoice" [options]="false" cardClass="statustic-card" blockClass="text-center"
+            [isCardFooter]="true" footerClass="bg-c-green">
+
+            <p class="m-b-0"> List of Created Fin 04 Invoice</p>
+            <div class="progress">
+                <div class="progress-bar bg-c-green" style="width:100%"></div>
+            </div>
+            <div class="app-card-footer text-center">
+                <a href="#!" [routerLink]="['/transaction/fin-04-invoice/fin-04-list']"
+                    class="text-white text-center"><i class="fa fa-eye m-r-10"></i>View</a>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-md-4">
+        <app-card cardTitle="Fin 01 Not Approved - Invoice" [options]="false" cardClass="statustic-card"
+            blockClass="text-center" [isCardFooter]="true" footerClass="bg-c-red">
+
+            <p class="m-b-0">List of Fin 01 Invoice Not Approved</p>
+            <div class="progress">
+                <div class="progress-bar bg-c-red" style="width:100%"></div>
+            </div>
+            <div class="app-card-footer text-center">
+                <a href="#!" [routerLink]="['/transaction/fin-01-invoice/FIN-01-na']" class="text-white text-center"><i
+                        class="fa fa-eye m-r-10"></i>View</a>
+            </div>
+        </app-card>
+    </div>
+
+
+</div> -->
